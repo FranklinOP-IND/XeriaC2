@@ -620,10 +620,10 @@ def main():
         elif "httpget" in cnc:
             try:
                 url = cnc.split()[1]
-                os.system(f'./httpget {url} 10000 50 100')
+                os.system(f'node http-get {url} {time}')
             except IndexError:
-                print('Usage: httpget <url>')
-                print('Example: httpget http://example.com')
+                print('Usage: http-get <url> <time>')
+                print('Example: htt-pget http://example.com')
 
 # BANNERS
 
