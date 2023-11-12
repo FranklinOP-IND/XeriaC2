@@ -343,7 +343,7 @@ def main():
                 packet = cnc.split()[3]
                 thread = cnc.split()[4]
                 time = cnc.split()[5]
-                os.system(f'python UDP.py {ip} {port} {packet} {thread} (time}')
+                os.system(f'python UDP.py {ip} {port} {packet} {thread} {time}')
             except IndexError:
                 print('Usage: UDP <ip> <port> <packet> <thread> <time>')
                 print('Example: UDP 1.1.1.1 80 5000000 500 200')
