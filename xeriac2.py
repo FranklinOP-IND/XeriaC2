@@ -523,10 +523,10 @@ def main():
             try:
                 url = cnc.split()[1]
                 time = cnc.split()[2]
-                os.system(f'node HTTP-RAW {url} {time}')
+                os.system(f'node HTTP-RAW.js {url} proxies.txt {time} POST')
             except IndexError:
-                print('Usage: http-raw <url> <time>')
-                print('Example: http-raw http://example.com 60')
+                print('Usage: HTTP-RAW <url> <time>')
+                print('Example: HTTP-RAW http://example.com 60')
 
         elif "http-get" in cnc:
             try:
