@@ -5,10 +5,8 @@ import time
 import random
 
 if len(sys.argv) < 5:
-  print("UDP By XeriaC2")
   sys.exit("> Usage: python "+sys.argv[0]+" <ip> <port> <packet> <threads> <time>")
 
-print("> Code by Jxdn <")
 ip = str(sys.argv[1])
 port = int(sys.argv[2])
 packet = int(sys.argv[3])
