@@ -172,7 +172,7 @@ def layer7():
  ╔═╦═══════════╬═══════════╦═══════════╬═══════════╦═╗
  ║A║  HTTP-API ║  HTTP-PRO ║   ovh     ║  HTTP-GET ║R║
  ║P║           ║   TLS     ║           ║  HTTP-POST║A║
- ║I║           ║           ║           ║  HTTP-RAW ║W║
+ ║I║             ║xeriatls ║           ║  HTTP-RAW ║W║
  ╚═╣           ║           ║           ║           ╠═╝
    ║           ║           ║           ║           ║
    ║           ║           ║           ║           ║
