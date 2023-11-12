@@ -1,4 +1,3 @@
-by XeriaC2
 import socket
 import sys, os
 import threading
