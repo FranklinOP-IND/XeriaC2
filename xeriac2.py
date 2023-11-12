@@ -1,7 +1,4 @@
-##############################
-# ZxCDDoS Made by zxcr9999   #
-# COPY = NIGGER              #
-##############################
+
 
 import socket
 import os
