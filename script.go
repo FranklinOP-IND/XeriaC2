@@ -1,63 +1,61 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
-	"log"
+	"io/ioutil"
+	"net/http"
 	"os"
-
-	"github.com/valyala/fasthttp"
 )
 
 func main() {
 	// Pastikan argumen telah diberikan saat menjalankan skrip
-	if len(os.Args) != 2 {
-		fmt.Println("Usage: go run script.go <URL>")
+	if len(os.Args) != 3 {
+		fmt.Println("Usage: go run script.go <URL> <Method>")
 		os.Exit(1)
 	}
 
 	url := os.Args[1]
+	method := os.Args[2]
 
-	// Pastikan URL memiliki protokol (http:// atau https://)
-	if !hasHTTPProtocol(url) {
-		url = "https://" + url
+	// Lakukan pengecekan metode yang valid
+	if method != "GET" && method != "POST" {
+		fmt.Println("Invalid method. Please use GET or POST.")
+		os.Exit(1)
 	}
 
-	// Buat klien fasthttp
-	client := &fasthttp.Client{}
-
-	// Buat permintaan GET
-	statusCode, body, err := sendRequest(client, "GET", url, nil)
+	// Kirim permintaan HTTP
+	response, err := sendHTTPRequest(url, method)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("Error sending HTTP request:", err)
+		os.Exit(1)
 	}
 
-	// Cetak status code dan body dari respons
-	fmt.Printf("GET Request Status Code: %d\n", statusCode)
-	fmt.Printf("GET Request Body: %s\n", body)
+	// Cetak respons dari server
+	fmt.Println("Response from server:")
+	fmt.Println(string(response))
 }
 
-func hasHTTPProtocol(url string) bool {
-	return len(url) > 7 && (url[:7] == "http://" || url[:8] == "https://")
-}
-
-func sendRequest(client *fasthttp.Client, method, url string, body []byte) (int, []byte, error) {
-	req := fasthttp.AcquireRequest()
-	req.SetRequestURI(url)
-	req.Header.SetMethod(method)
-
-	if body != nil {
-		req.SetBody(body)
-	}
-
-	resp := fasthttp.AcquireResponse()
-
-	err := client.Do(req, resp)
+func sendHTTPRequest(url, method string) ([]byte, error) {
+	// Persiapkan permintaan HTTP
+	req, err := http.NewRequest(method, url, nil)
 	if err != nil {
-		return 0, nil, err
+		return nil, err
 	}
 
-	statusCode := resp.StatusCode()
-	respBody := resp.Body()
+	// Lakukan permintaan HTTP
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
 
-	return statusCode, respBody, nil
+	// Baca respons dari server
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	return body, nil
 }
