@@ -17,6 +17,11 @@ func main() {
 
 	url := os.Args[1]
 
+	// Pastikan URL memiliki protokol (http:// atau https://)
+	if !hasHTTPProtocol(url) {
+		url = "https://" + url
+	}
+
 	// Buat klien fasthttp
 	client := &fasthttp.Client{}
 
@@ -29,6 +34,10 @@ func main() {
 	// Cetak status code dan body dari respons
 	fmt.Printf("GET Request Status Code: %d\n", statusCode)
 	fmt.Printf("GET Request Body: %s\n", body)
+}
+
+func hasHTTPProtocol(url string) bool {
+	return len(url) > 7 && (url[:7] == "http://" || url[:8] == "https://")
 }
 
 func sendRequest(client *fasthttp.Client, method, url string, body []byte) (int, []byte, error) {
