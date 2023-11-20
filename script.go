@@ -2,59 +2,51 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"net/http"
+	"github.com/valyala/fasthttp"
 	"os"
+	"strconv"
+	"time"
 )
 
 func main() {
-	// Pastikan argumen telah diberikan saat menjalankan skrip
-	if len(os.Args) != 3 {
-		fmt.Println("Usage: go run script.go <URL> <Method>")
-		os.Exit(1)
+	// Menerima argumen command-line
+	if len(os.Args) != 4 {
+		fmt.Println("Usage: go run main.go <url> <port> <time_in_seconds>")
+		return
 	}
 
 	url := os.Args[1]
-	method := os.Args[2]
-
-	// Lakukan pengecekan metode yang valid
-	if method != "GET" && method != "POST" {
-		fmt.Println("Invalid method. Please use GET or POST.")
-		os.Exit(1)
-	}
-
-	// Kirim permintaan HTTP
-	response, err := sendHTTPRequest(url, method)
+	port := os.Args[2]
+	duration, err := strconv.Atoi(os.Args[3])
 	if err != nil {
-		fmt.Println("Error sending HTTP request:", err)
-		os.Exit(1)
+		fmt.Println("Invalid duration:", err)
+		return
 	}
 
-	// Cetak respons dari server
-	fmt.Println("Response from server:")
-	fmt.Println(string(response))
-}
+	// Menggabungkan URL dan port untuk membentuk alamat tujuan
+	destAddr := fmt.Sprintf("%s:%s", url, port)
 
-func sendHTTPRequest(url, method string) ([]byte, error) {
-	// Persiapkan permintaan HTTP
-	req, err := http.NewRequest(method, url, nil)
-	if err != nil {
-		return nil, err
+	// Memulai waktu
+	startTime := time.Now()
+
+	// Loop untuk mengirim permintaan setiap detik selama durasi yang ditentukan
+	for {
+		// Membuat permintaan GET menggunakan fasthttp
+		statusCode, body, err := fasthttp.Get(nil, destAddr)
+		if err != nil {
+			fmt.Println("Error sending request:", err)
+			return
+		}
+
+		// Menampilkan informasi respon
+		fmt.Printf("Status Code: %d, Response Body: %s\n", statusCode, body)
+
+		// Menghentikan loop jika waktu berlalu
+		if time.Since(startTime).Seconds() >= float64(duration) {
+			break
+		}
+
+		// Menunggu 1 detik sebelum mengirim permintaan berikutnya
+		time.Sleep(time.Second)
 	}
-
-	// Lakukan permintaan HTTP
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	// Baca respons dari server
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	return body, nil
 }
