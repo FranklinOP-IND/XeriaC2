@@ -22,11 +22,21 @@ node BYPASS.js
 node Tlsv1.js
 
 go run STRONG-CFB.go
+
 node HTTP-RAW.js
+
+node http-get.js
+
+node tls.js
 
 python udp.py
 
 python UDP.py
+
+The Methods Js,Golang,Python
+
+PLEASE STAR WITH YOU SUPPORT ME
+
 
 How To Install/Setup
 
