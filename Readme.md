@@ -16,11 +16,16 @@ git clone https://github.com/levanderdev/XeriaC2
 cd XeriaC2
 
 Methods : 
+
 node BYPASS.js
+
 node Tlsv1.js
+
 go run STRONG-CFB.go
 node HTTP-RAW.js
+
 python udp.py
+
 python UDP.py
 
 How To Install/Setup
