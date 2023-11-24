@@ -1,4 +1,4 @@
-How To Install : 
+## How To Install : 
 
 git clone https://github.com/levanderdev/XeriaC2
 
@@ -6,7 +6,7 @@ cd XeriaC2
 
 python xeriac2.py
 
-Wanna Update Method?
+## Wanna Update Method?
 remove file XeriaC2
 Open Terminal
 Paste :
@@ -36,7 +36,7 @@ go build
 example: ./http http://51.159.30.249 POST 1500
 
 
-Methods : 
+## Methods : 
 
 node BYPASS.js
 
@@ -54,11 +54,13 @@ python udp.py
 
 python UDP.py
 
+./http
+
 The Methods Js,Golang,Python
 
 PLEASE STAR WITH YOU SUPPORT ME
 
 
-How To Install/Setup
+## How To Install/Setup
 
 https://github.com/levanderdev/XeriaC2/assets/86545190/b02456da-afa0-453c-b6f6-4e31de2aa570
