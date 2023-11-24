@@ -15,6 +15,8 @@ git clone https://github.com/levanderdev/XeriaC2
 
 cd XeriaC2
 
+and scroll you can get the method maybe node HTTP-FLOOD.js 
+
 ----
 WANNA USE HTTP-FLOOD.go?
 STEP BY STEP :
