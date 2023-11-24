@@ -15,6 +15,18 @@ git clone https://github.com/levanderdev/XeriaC2
 
 cd XeriaC2
 
+----
+WANNA USE HTTP-FLOOD.go?
+STEP BY STEP :
+INSTALL : 
+https://github.com/levanderdev/XeriaC2
+cd XeriaC2
+go mod init http 
+go get github.com/valyala/fasthttp
+go build 
+./http
+----
+
 Methods : 
 
 node BYPASS.js
