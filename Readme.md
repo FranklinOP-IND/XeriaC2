@@ -1,3 +1,7 @@
+## ADMIN/PASSWORD
+Username : admin
+Password : admin
+
 ## How To Install : 
 
 git clone https://github.com/levanderdev/XeriaC2
