@@ -1,3 +1,10 @@
+## Telegram/Chat/Bug
+Telegram : https://t.me/perkicauc2
+
+Chat : https://t.me/xeriac2chat
+
+Bug? : https://t.me/perkicau
+
 ## ADMIN/PASSWORD
 Username : admin
 
