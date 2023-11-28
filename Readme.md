@@ -1,4 +1,6 @@
 ## Telegram/Chat/Bug
+Free Tools DDoS/Methods : https://t.me/freetoolsddos
+
 Telegram : https://t.me/perkicauc2
 
 Chat : https://t.me/xeriac2chat
