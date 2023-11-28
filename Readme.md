@@ -1,6 +1,6 @@
 ## File Stresser/DDoS/Botnet/Api
 you can get the this free !!! Open file the install the zip
-## Tutorial
+## Tutorial Setup XeriaC2
 1. Open Github XeriaC2
 2. Open File Methods
 3. Click tutorial.txt
@@ -12,7 +12,7 @@ you can get the this free !!! Open file the install the zip
 9. Golang.js Run : go run name.go
 10. Python.js Run : python name.py
 11. Thankss
-12. 
+12. Or python XeriaC2
 
 ## Telegram/Chat/Bug
 Free Tools DDoS/Methods : https://t.me/freetoolsddos
