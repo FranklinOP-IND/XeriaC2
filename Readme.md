@@ -1,6 +1,3 @@
-## Readme.md
-Please check Methods File
-Click Tutorial
 ## Tutorial
 1. Open Github XeriaC2
 2. Open File Methods
