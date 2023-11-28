@@ -3,13 +3,14 @@
 2. Open File Methods
 3. Click tutorial.txt
 4. Open Terminal Or Cloud Shell
-5. Input cd XeriaC2
-6. And You See File Methods
-7. Node.js Methods Run : node name.js
-8. Golang.js Run : go run name.go
-9. Python.js Run : python name.py
-10. Thankss
-11. 
+5. git clone https://github.com/levanderdev/XeriaC2
+6. cd XeriaC2
+7. And You See File Methods
+8. Node.js Methods Run : node name.js
+9. Golang.js Run : go run name.go
+10. Python.js Run : python name.py
+11. Thankss
+12. 
 
 ## Telegram/Chat/Bug
 Free Tools DDoS/Methods : https://t.me/freetoolsddos
