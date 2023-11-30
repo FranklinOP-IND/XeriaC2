@@ -16,7 +16,7 @@ you can get the this free !!! Open file the install the zip
 11. Thankss
 12. Or python XeriaC2
 
-## Telegram/Chat/Bug
+## Telegram/Chat/Bug</br>
 Free Tools DDoS/Methods : https://t.me/freetoolsddos
 
 Telegram : https://t.me/perkicauc2
@@ -25,7 +25,7 @@ Chat : https://t.me/xeriac2chat
 
 Bug? : https://t.me/perkicau
 
-## ADMIN/PASSWORD
+## ADMIN/PASSWORD</br>
 Username : admin
 
 Password : admin
@@ -38,7 +38,7 @@ cd XeriaC2
 
 python xeriac2.py
 
-## Wanna Update Method?
+## Wanna Update Method?</br>
 remove file XeriaC2
 Open Terminal
 Paste :
