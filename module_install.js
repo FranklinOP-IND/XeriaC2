@@ -1,32 +1,48 @@
-const moduleToInstall = 'axios';
+const fs = require('fs');
+const child_process = require('child_process');
 
-// Function to check if the module is already installed
-function checkModuleInstallation(module) {
-  try {
-    // Try to check if the module can be imported
-    require.resolve(module);
-    console.log(`Module '${module}' is already installed.`);
-  } catch (err) {
-    // If the module cannot be imported, install it
-    console.log(`Module '${module}' is not installed. Installing...`);
-    installModule(module);
+const scriptFilePath = process.argv[2];
+
+if (!scriptFilePath) {
+  console.error('Usage: node auto_install_modules.js <scriptFilePath>');
+  process.exit(1);
+}
+
+// Baca isi file skrip
+fs.readFile(scriptFilePath, 'utf8', (err, data) => {
+  if (err) {
+    console.error(`Failed to read script file ${scriptFilePath}: ${err}`);
+    process.exit(1);
   }
-}
 
-// Function to install the module
-function installModule(module) {
-  // Run shell command to install the module
-  const installationProcess = child_process.spawn('npm', ['install', module], { stdio: 'inherit' });
+  // Temukan modul-modul yang direquire dalam skrip
+  const requiredModules = data.match(/require\s*\(\s*['"]([^'"]+)['"]\s*\)/g);
 
-  // Handle events when the installation process is complete
-  installationProcess.on('close', (exitCode) => {
-    if (exitCode === 0) {
-      console.log(`Module '${module}' successfully installed.`);
-    } else {
-      console.error(`Failed to install module '${module}'.`);
-    }
+  if (!requiredModules) {
+    console.log('No modules required in the script.');
+    process.exit(0);
+  }
+
+  // Ekstrak nama modul dari hasil pencarian
+  const moduleNames = requiredModules.map((requireStatement) => {
+    return requireStatement.match(/require\s*\(\s*['"]([^'"]+)['"]\s*\)/)[1];
   });
-}
 
-// Call the function to check and install the module
-checkModuleInstallation(moduleToInstall);
+  // Instalasi modul-modul yang ditemukan
+  if (moduleNames.length > 0) {
+    console.log(`Installing modules: ${moduleNames.join(', ')}`);
+
+    // Jalankan perintah shell untuk menginstal modul
+    const installCommand = `npm install ${moduleNames.join(' ')}`;
+    const installationProcess = child_process.spawnSync(installCommand, { shell: true, stdio: 'inherit' });
+
+    // Tampilkan pesan apakah instalasi berhasil atau tidak
+    if (installationProcess.status === 0) {
+      console.log('Modules installed successfully.');
+    } else {
+      console.error('Failed to install modules.');
+    }
+  } else {
+    console.log('No modules found in the script.');
+  }
+});
