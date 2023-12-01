@@ -654,7 +654,7 @@ def main():
                 proxy = cnc.split()[5]
                 os.system(f'node 404.js {target} {time} {rate} {threads} {proxy}')
             except IndexError:
-                print('Usage: 404 <target> <time> <threads> <http.txte> <rps>')
+                print('Usage: 404 <target> <time> <threads> <http.txte>')
                 print('Example: 404 https://example.com 60 500 http.txt 500')
 
         
