@@ -13,8 +13,12 @@ python xeriac2.py
 ```
 
 ## Login 
+```sh
 Username : admin
+
 Password : admin
+
+```
 
 ## File Stresser/DDoS/Botnet/Api
 you can get the this free !!! Open file the install the zip
