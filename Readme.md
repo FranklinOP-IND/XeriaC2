@@ -44,32 +44,7 @@ go build
 ./http <target> <GET/POST> <threads>
 example: ./http http://51.159.30.249 POST 1500
 
-
-## Methods : 
-
-node BYPASS.js
-
-node Tlsv1.js
-
-go run STRONG-CFB.go
-
-node HTTP-RAW.js
-
-node http-get.js
-
-node tls.js
-
-node tlsv2.js
-
-python udp.py
-
-python UDP.py
-
-./http
-
-The Methods Js,Golang,Python
-
-PLEASE STAR WITH YOU SUPPORT ME
+**PLEASE STAR WITH YOU SUPPORT ME**
 
 
 ## How To Install/Setup
