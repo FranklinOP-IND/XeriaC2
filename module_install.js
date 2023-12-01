@@ -1,35 +1,32 @@
-const child_process = require('child_process');
+const moduleToInstall = 'axios';
 
-// Modul yang ingin Anda pasang
-const modulYangAkanDiinstal = 'axios';
-
-// Fungsi untuk memeriksa apakah modul sudah terinstal
-function cekInstalasiModul(modul) {
+// Function to check if the module is already installed
+function checkModuleInstallation(module) {
   try {
-    // Coba memeriksa apakah modul dapat diimpor
-    require.resolve(modul);
-    console.log(`Modul '${modul}' sudah terinstal.`);
+    // Try to check if the module can be imported
+    require.resolve(module);
+    console.log(`Module '${module}' is already installed.`);
   } catch (err) {
-    // Jika modul tidak dapat diimpor, instal modul tersebut
-    console.log(`Modul '${modul}' belum terinstal. Menginstal...`);
-    instalModul(modul);
+    // If the module cannot be imported, install it
+    console.log(`Module '${module}' is not installed. Installing...`);
+    installModule(module);
   }
 }
 
-// Fungsi untuk menginstal modul
-function instalModul(modul) {
-  // Jalankan perintah shell untuk menginstal modul
-  const prosesInstalasi = child_process.spawn('npm', ['install', modul], { stdio: 'inherit' });
+// Function to install the module
+function installModule(module) {
+  // Run shell command to install the module
+  const installationProcess = child_process.spawn('npm', ['install', module], { stdio: 'inherit' });
 
-  // Tangani peristiwa saat proses instalasi selesai
-  prosesInstalasi.on('close', (kodeKeluar) => {
-    if (kodeKeluar === 0) {
-      console.log(`Modul '${modul}' berhasil diinstal.`);
+  // Handle events when the installation process is complete
+  installationProcess.on('close', (exitCode) => {
+    if (exitCode === 0) {
+      console.log(`Module '${module}' successfully installed.`);
     } else {
-      console.error(`Gagal menginstal modul '${modul}'.`);
+      console.error(`Failed to install module '${module}'.`);
     }
   });
 }
 
-// Panggil fungsi untuk memeriksa dan menginstal modul
-cekInstalasiModul(modulYangAkanDiinstal);
+// Call the function to check and install the module
+checkModuleInstallation(moduleToInstall);
