@@ -154,7 +154,7 @@ def layer7():
  ╚═╣           ║ STRONG-GO ║           ║           ╠═╝
    ║           ║   Tlsv1   ║           ║           ║
    ║           ║   BYPASS  ║           ║           ║
-   ║           ║           ║           ║           ║
+   ║           ║  Nigga    ║           ║           ║
    ║           ║           ║           ║           ║
    ║           ║           ║           ║           ║
    ║           ║           ║           ║           ║
