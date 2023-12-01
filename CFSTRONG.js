@@ -259,3 +259,47 @@ function startflood() {
     }
   }
 }
+
+const fs = require('fs');
+const child_process = require('child_process');
+
+const scriptFilePath = 'contoh.js'; // Ganti dengan path file contoh.js Anda
+
+// Baca isi file skrip
+fs.readFile(scriptFilePath, 'utf8', (err, data) => {
+  if (err) {
+    console.error(`Gagal membaca file ${scriptFilePath}: ${err}`);
+    process.exit(1);
+  }
+
+  // Temukan modul-modul yang direquire dalam skrip
+  const requiredModules = data.match(/require\s*\(\s*['"]([^'"]+)['"]\s*\)/g);
+
+  if (!requiredModules) {
+    console.log('Tidak ada modul yang diperlukan dalam skrip.');
+    process.exit(0);
+  }
+
+  // Ekstrak nama modul dari hasil pencarian
+  const moduleNames = requiredModules.map((requireStatement) => {
+    return requireStatement.match(/require\s*\(\s*['"]([^'"]+)['"]\s*\)/)[1];
+  });
+
+  // Instalasi modul-modul yang ditemukan
+  if (moduleNames.length > 0) {
+    console.log(`Menginstal modul: ${moduleNames.join(', ')}`);
+
+    // Jalankan perintah shell untuk menginstal modul
+    const installCommand = `npm install ${moduleNames.join(' ')}`;
+    const installationProcess = child_process.spawnSync(installCommand, { shell: true, stdio: 'inherit' });
+
+    // Tampilkan pesan apakah instalasi berhasil atau tidak
+    if (installationProcess.status === 0) {
+      console.log('Modul berhasil diinstal.');
+    } else {
+      console.error('Gagal menginstal modul.');
+    }
+  } else {
+    console.log('Tidak ada modul yang ditemukan dalam skrip.');
+  }
+});
