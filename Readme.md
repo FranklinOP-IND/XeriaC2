@@ -1,4 +1,5 @@
 ## Setup/Install
+```sh
 Cloud Shell : https://shell.cloud.google.com/?show=ide%2Cterminal
 
 git clone https://github.com/levanderdev/XeriaC2
