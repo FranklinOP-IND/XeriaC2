@@ -7,7 +7,11 @@ cd XeriaC2
 
 node auto_install_modules.js 404.js HTTP-NIGGA,js BYPASS.js holdv2.js Tlsv1.js
 
-cd XeriaC2
+python xeriac2.py
+
+## Login 
+Username : admin
+Password : admin
 
 ## File Stresser/DDoS/Botnet/Api
 you can get the this free !!! Open file the install the zip
