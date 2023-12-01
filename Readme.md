@@ -1,18 +1,12 @@
+## Setup/Install
+Cloud Shell : https://shell.cloud.google.com/?show=ide,terminal
+git clone https://github.com/levanderdev/XeriaC2
+cd XeriaC2
+node auto_install_modules.js 404.js HTTP-NIGGA,js BYPASS.js holdv2.js Tlsv1.js
+cd XeriaC2
+
 ## File Stresser/DDoS/Botnet/Api
 you can get the this free !!! Open file the install the zip
-## Tutorial Setup XeriaC2
-1. Open Github XeriaC2
-2. Open File Methods
-3. Click tutorial.txt
-4. Open Terminal Or Cloud Shell
-5. git clone https://github.com/levanderdev/XeriaC2
-6. cd XeriaC2
-7. And You See File Methods
-8. Node.js Methods Run : node name.js
-9. Golang.js Run : go run name.go
-10. Python.js Run : python name.py
-11. Thankss
-12. Or python XeriaC2
 
 ## Telegram/Chat/Bug</br>
 Free Tools DDoS/Methods : https://t.me/freetoolsddos
