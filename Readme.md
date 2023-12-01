@@ -22,26 +22,9 @@ Username : admin
 
 Password : admin
 
-## How To Install : 
-
-git clone https://github.com/levanderdev/XeriaC2
-
-cd XeriaC2
-
-python xeriac2.py
-
-## Wanna Update Method?</br>
+## Wanna Update Method?</br> 
 remove file XeriaC2
-Open Terminal
-Paste :
-
-git clone https://github.com/levanderdev/XeriaC2
-
-cd XeriaC2
-
-and scroll you can get the method maybe node HTTP-FLOOD.js 
-
-----
+-----
 WANNA USE HTTP-FLOOD.go?
 STEP BY STEP :
 ## INSTALL : 
