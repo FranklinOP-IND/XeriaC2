@@ -886,7 +886,7 @@ def main():
  
 def login():
     os.system("clear")
-    user = "admint"
+    user = "admin"
     passwd = "admin"
     username = input("""
 
