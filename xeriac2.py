@@ -667,7 +667,7 @@ def main():
 \033[35m           ╚════════════════════════════════════════════════════════╝
 """)
                   
-		elif sinput == "bypass" or sinput == "BYPASS":
+		elif sinput == "BYPASS" or sinput == "BYPASS":
 			try:
 				host = sin.split()[1]
 				time = sin.split()[2]
