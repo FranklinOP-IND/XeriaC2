@@ -667,7 +667,7 @@ def main():
 \033[35m           ╚════════════════════════════════════════════════════════╝
 """)
 		
-		elif sinput == "bypass" or sinput == "BYPASS":
+		eelif "bypass" in cnc
 			try:
 				host = sin.split()[1]
 				time = sin.split()[2]
@@ -697,7 +697,7 @@ def main():
 \033[35m           ╚════════════════════════════════════════════════════════╝
 """)
 		
-                elif sinput == "mix" or sinput == "MIX":
+                elif "MIX" in cnc
 			try:
 				url = sin.split()[1]
 				thread = sin.split()[2]
@@ -749,7 +749,7 @@ def main():
 \033[35m           ╚════════════════════════════════════════════════════════╝
 """)
 						    
-		elif sinput == "browser" or sinput == "BROWSER":
+		elif "BROWSER" in cnc
 			try:
 				url = sin.split()[1]
 				thread = sin.split()[2]
