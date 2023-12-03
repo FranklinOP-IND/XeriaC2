@@ -666,10 +666,7 @@ def main():
 \033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
 \033[35m           ╚════════════════════════════════════════════════════════╝
 """)
-                        except ValueError:
-				main()
-			except IndexError:
-				main()
+                  
 		elif sinput == "bypass" or sinput == "BYPASS":
 			try:
 				host = sin.split()[1]
