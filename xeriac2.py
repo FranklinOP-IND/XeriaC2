@@ -668,7 +668,7 @@ def main():
                 thread = cnc.split()[2]
                 time = cnc.split()[3]
                 
-                os.system(f'node HTTP-NIGGA.js {url} {thread} {time}')
+                os.system(f'node MIX.js {url} {thread} {time}')
 				os.system ("clear")
 				print(f"""
 \033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
