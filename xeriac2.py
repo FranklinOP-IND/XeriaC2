@@ -13,7 +13,6 @@ import os,sys,time,re,requests,json
 from requests import post
 import codecs
 import string
-import getpassi
 import urllib
 import getpass
 
