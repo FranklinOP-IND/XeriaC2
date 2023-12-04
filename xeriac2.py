@@ -14,9 +14,6 @@ import os,sys,time,re,requests,json
 import codecs
 
 
-B = '\033[35m' #MERAH
-P = '\033[1;37m' #PUTIH
-
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -149,6 +146,9 @@ def special():
                 \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>             \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
                 \x1b[38;2;0;212;14m╚══════════════════════╩════════════════════════╝
 ''')
+
+B = '\033[35m' #MERAH
+P = '\033[1;37m' #PUTIH
     
 def layer7():
     clear()
