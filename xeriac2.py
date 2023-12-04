@@ -140,6 +140,8 @@ HOW TO USE TYPE L7 OR L4 TO SEE COMMANDS
 
 def menu():
     os.system ("clear")
+    print('\x1b[38;2;0;255;255m[ \x1b[38;2;233;233;233mXeria \x1b[38;2;0;255;255m] | \x1b[38;2;233;233;233mWelcome to XeriaC2 \x1b[38;2;0;255;255m| \x1b[38;2;233;233;233mOwner : Xeria \x1b[38;2;0;255;255m| \x1b[38;2;233;233;233mUpdate v1.0')
+    print("")
     print("""
 \033[37m           ,MMM\033[35m8&&&.           WELCOME TO - BIGBANGPANEL
 \033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK MAN & Mr. E-CYBER
