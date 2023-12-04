@@ -143,9 +143,9 @@ def menu():
     print('\x1b[38;2;0;255;255m[ \x1b[38;2;233;233;233mXeria \x1b[38;2;0;255;255m] | \x1b[38;2;233;233;233mWelcome to XeriaC2 \x1b[38;2;0;255;255m| \x1b[38;2;233;233;233mOwner : Xeria \x1b[38;2;0;255;255m| \x1b[38;2;233;233;233mUpdate v1.0')
     print("")
     print("""
-\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - BIGBANGPANEL
-\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK MAN & Mr. E-CYBER
-\033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   EXECUTOR TEAM Version, 1.2
+\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - XeriaC2
+\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK Xeria
+\033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   XeriaC2 Version 1.1
 \033[37m  ::     MMMMM8\033[35m8&&&&&&     ::  2023 - 2024
 \033[37m  '::....MMMMM8\033[35m8&&&&&&....::'
 \033[37m     `''''MMMMM\033[35m88&&&&''''`
@@ -160,8 +160,8 @@ def menu():
 def main():
 
 	while True:
-		sys.stdout.write(f"\x1b]2;[/] BigBang Pannel :: Server Online 500 :: Online 1 :: Running: 0/10\x07")
-		sin = input("\033[0;30;45mBigBang@PANNEL\x1b[1;37m\033[0m:~# \x1b[1;37m\033[0m ")
+		sys.stdout.write(f"\x1b]2;[/] XeriaC2 :: Server Online 500 :: Online 1 :: Running: 0/10\x07")
+		sin = input("\033[0;30;45mXeriaC2@admin\x1b[1;37m\033[0m:~# \x1b[1;37m\033[0m ")
 		sinput = sin.split(" ")[0]
 		if sinput == "clear":
 			os.system ("clear")
@@ -868,7 +868,7 @@ def main():
 \033[1;37m                            ATTACK HAS BEEN STARTED!
 \033[35m                ╚╦════════════════════════════════════════════╦╝
 \033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
+\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{url} \033[35m]
 \033[1;37m                   THREAD     : \033[35m[ \033[1;37m{thread} \033[35m]
 \033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
 \033[1;37m                   LAYER-7   : \033[35m[ \033[1;37mUAM \033[35m]
