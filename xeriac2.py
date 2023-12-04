@@ -1,5 +1,6 @@
 
 
+# -*- coding: utf-8 -*-
 from operator import index
 import socket
 import os
@@ -149,11 +150,10 @@ def special():
 
 B = '\033[35m' #MERAH
 P = '\033[1;37m' #PUTIH
-    
+
 def layer7():
-    clear()
-    si()
-    print(f'''
+	os.system ("clear")
+	print("""
 \033[37m           ,MMM\033[35m8&&&.           WELCOME TO - BIGBANGPANEL
 \033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK MAN & Mr. E-CYBER
 \033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   EXECUTOR TEAM Version, 1.2
@@ -175,6 +175,7 @@ METHODE [URL] [PORT] [TIME]
  – TLSV2
 
 """)
+
 def layer4():
     clear()
     si()
