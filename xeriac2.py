@@ -1,5 +1,6 @@
 
 
+from operator import index
 import socket
 import os
 import requests
@@ -7,6 +8,11 @@ import random
 import getpass
 import time
 import sys
+import random
+from colorama import Fore, Back
+import os,sys,time,re,requests,json
+import codecs
+
 
 B = '\033[35m' #MERAH
 P = '\033[1;37m' #PUTIH
