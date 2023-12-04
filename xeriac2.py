@@ -154,7 +154,6 @@ def layer7():
     clear()
     si()
     print(f'''
-def layer7():
 	os.system ("clear")
 	print("""
 \033[37m           ,MMM\033[35m8&&&.           WELCOME TO - BIGBANGPANEL
