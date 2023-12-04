@@ -30,7 +30,7 @@ def layer7():
 
 \033[37m[ LAYER - 7 ]
 \033[35mNOTE USE:
-METHODE [URL] [PORT] [TIME]
+METHODE [URL] [THREAD] [TIME]
 
 \033[37m – STRIKE   – TLSV3 
  – BOMB2    – JAVA
