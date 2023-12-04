@@ -36,7 +36,7 @@ METHODE [URL] [PORT] [TIME]
  – BOMB2    – JAVA
  – BOMB     – HTTP
  – GOLDEN   – MIX
- – UAM 
+ – BYPASS 
  – TLS 
  – TLSV2
 
@@ -854,7 +854,7 @@ def main():
 				main()			    			    
 		elif sinput == "uam" or sinput == "UAM":
 			try:
-				host = sin.split()[1]
+				url = sin.split()[1]
 				thread = sin.split()[2]
 				time = sin.split()[3]
 				os.system(f'node MIX.JS {url} {thread} {time}')
