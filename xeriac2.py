@@ -815,7 +815,7 @@ def main():
 				main()
 			except IndexError:
 				main()
-		elif sinput == "uam" or sinput == "UAM":
+		elif sinput == "bypass" or sinput == "BYPASS":
 			try:
 				url = sin.split()[1]
 				thread = sin.split()[2]
