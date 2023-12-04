@@ -8,6 +8,9 @@ import getpass
 import time
 import sys
 
+B = '\033[35m' #MERAH
+P = '\033[1;37m' #PUTIH
+
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
