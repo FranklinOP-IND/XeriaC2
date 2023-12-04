@@ -774,9 +774,9 @@ def main():
             print('Method "CLOUDFLARE-LAG" not enabled')
 
         elif "help" in cnc:
-            print(f'''
-\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - XeriaC2
-\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK Xeria
+            print("""
+\033[37m           ,MMM\033[35m8&&&.           WELCOME TO - BIGBANGPANEL
+\033[37m      _...MMMMM\033[35m88&&&&..._      KETHEK MAN & Mr. E-CYBER
 \033[37m   .::'''MMMMM8\033[35m8&&&&&&'''::.   EXECUTOR TEAM Version, 1.2
 \033[37m  ::     MMMMM8\033[35m8&&&&&&     ::  2023 - 2024
 \033[37m  '::....MMMMM8\033[35m8&&&&&&....::'
