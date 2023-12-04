@@ -661,6 +661,10 @@ def main():
             except IndexError:
                 print('Usage: BYPASS <url> <time> <thread> <http.txt> <request_persecond>')
                 print('Example: BYPASS https://example.com 60 10 http.txt 5000')
+			except ValueError:
+				main()
+			except IndexError:
+				main()
 
         elif "MIX" in cnc:
             try:
@@ -688,6 +692,10 @@ def main():
             except IndexError:
                 print('Usage: MIX <url> thread> <time>')
                 print('Example: BYPASS https://example.com 500 60')
+			except ValueError:
+				main()
+			except IndexError:
+				main()
         
 
 # BANNERS
