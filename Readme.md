@@ -16,8 +16,8 @@ python xeriac2.py
 
 ## Login 
 ```sh
-Username : admin
-Password : admin
+Username : root
+Password : root
 
 ```
 
