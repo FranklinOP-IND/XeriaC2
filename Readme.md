@@ -6,7 +6,7 @@ git clone https://github.com/levanderdev/XeriaC2
 
 cd XeriaC2
 
-node auto_install_modules.js 404.js HTTP-NIGGA,js BYPASS.js holdv2.js Tlsv1.js
+node auto_install_modules.js 404.js HTTP-NIGGA.js BYPASS.js holdv2.js Tlsv1.js
 
 pip3 install -r requirements.txt
 
