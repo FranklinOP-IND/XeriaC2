@@ -663,7 +663,7 @@ def main():
                 rps = cnc.split()[3]
                 thread = cnc.split()[4]
                 proxy = cnc.split()[5]
-                os.system(f'node TLSv2.js {url} {time} {rps} {thread} {proxy')
+                os.system(f'node TLSv2.js {url} {time} {rps} {thread} {proxy}')
             except IndexError:
                 print('Usage: TLS <url> <time> <rps> <thread> <proxy ')
                 print('Example: TLS https://example.com 60 500 500 http.txt')
