@@ -21,7 +21,7 @@ const net = require("net");
 ░██╔██╗░██╔══╝░░██╔══██╗██║██╔══██║
 ██╔╝╚██╗███████╗██║░░██║██║██║░░██║
 ╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═╝╚═╝░░╚═╝
-    [ HOST ] [ TIME ] [ RPS ] [ THREAD ] [ PROXY ]
+    [ URL ] [ TIME ] [ RPS ] [ THREAD ] [ PROXY ]
     `);
 	 process.exit();}
  const headers = {};
