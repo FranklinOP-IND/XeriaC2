@@ -228,7 +228,7 @@ def menu():
 def main():
     menu()
     while(True):
-        cnc = input("\033[0;30;45mXeriaC2@admin\x1b[1;37m\033[0m:~# \x1b[1;37m\033[0m ")
+        cnc = input("\033[0;30;45mroot : Xeria ▶▶\x1b[1;37m\033[0m:~# \x1b[1;37m\033[0m ")
 
         if cnc == "layer7" or cnc == "LAYER7" or cnc == "L7" or cnc == "l7":
             layer7()
